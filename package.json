@@ -1,0 +1,72 @@
+{
+  "name": "@folio/plugin-select-application",
+  "version": "0.1.0",
+  "description": "Application-finder for Stripes",
+  "repository": "folio-org/ui-plugin-select-application",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "registry": "https://repository.folio.org/repository/npm-folio/"
+  },
+  "stripes": {
+    "actsAs": [
+      "plugin"
+    ],
+    "pluginType": "select-application",
+    "displayName": "ui-plugin-select-application.meta.title",
+    "okapiInterfaces": {
+    },
+    "stripesDeps": [
+      "@folio/stripes-erm-components"
+    ],
+    "permissionSets": [
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "yarn run test:jest",
+    "test:jest": "jest --ci --coverage",
+    "build-mod-descriptor": "stripes mod descriptor --full --strict | jq '.[]' > module-descriptor.json ",
+    "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-find-license ./translations/ui-plugin-find-license/compiled"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/eslint-parser": "^7.15.0",
+    "@folio/eslint-config-stripes": "^7.0.0",
+    "@folio/jest-config-stripes": "^2.0.0",
+    "@folio/stripes": "^9.0.0",
+    "@folio/stripes-cli": "^3.0.0",
+    "@folio/stripes-erm-components": "^9.0.0",
+    "@folio/stripes-erm-testing": "^2.0.0",
+    "@formatjs/cli": "^6.1.3",
+    "core-js": "^3.6.1",
+    "eslint": "^7.32.0",
+    "graphql": "^16.0.0",
+    "inflected": "^2.0.4",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-intl": "^6.4.4",
+    "react-query": "^3.9.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.0",
+    "redux-observable": "^1.2.0",
+    "regenerator-runtime": "^0.13.3",
+    "rxjs": "^6.6.3",
+    "typescript": "^2.8.0"
+  },
+  "dependencies": {
+    "@k-int/stripes-kint-components": "^5.1.1",
+    "classnames": "^2.2.5",
+    "dom-helpers": "^3.4.0",
+    "lodash": "^4.17.11",
+    "prop-types": "^15.6.0"
+  },
+  "peerDependencies": {
+    "@folio/stripes": "^9.0.0",
+    "@folio/stripes-erm-components": "^9.0.0",
+    "react": "^18.2.0",
+    "react-intl": "^6.4.4",
+    "react-router-dom": "^5.2.0"
+  }
+}
