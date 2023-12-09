@@ -1,10 +1,10 @@
 {
-    "meta.title": "Select application",
-    "selectApplication": "Select application",
-    "name": "Name",
+    "meta.title": "Vybrat aplikaci",
+    "selectApplication": "Vybrat aplikaci",
+    "name": "Jméno",
     "applicationsFound": "{count, number} applications found",
-    "totalSelected": "Total selected: {count, number}",
-    "applications": "Applications",
-    "search": "Search",
+    "totalSelected": "Celkem vybráno: {count, number}",
+    "applications": "Aplikace",
+    "search": "Vyhledat",
     "noSourceYet": "no source yet"
 }
