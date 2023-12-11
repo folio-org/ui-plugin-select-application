@@ -26,7 +26,7 @@
     "test": "yarn run test:jest",
     "test:jest": "jest --ci --coverage",
     "build-mod-descriptor": "stripes mod descriptor --full --strict | jq '.[]' > module-descriptor.json ",
-    "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-select-application ./translations/ui-plugin-select-application/compiled"
+    "formatjs-compile": "stripes translate compile"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
@@ -37,7 +37,6 @@
     "@folio/stripes-cli": "^3.0.0",
     "@folio/stripes-erm-components": "^9.0.0",
     "@folio/stripes-erm-testing": "^2.0.0",
-    "@formatjs/cli": "^6.1.3",
     "core-js": "^3.6.1",
     "eslint": "^7.32.0",
     "graphql": "^16.0.0",
