@@ -2,9 +2,9 @@
     "meta.title": "Vybrat aplikaci",
     "selectApplication": "Vybrat aplikaci",
     "name": "Jméno",
-    "applicationsFound": "{count, number} applications found",
+    "applicationsFound": "{count, number} nalezených aplikací",
     "totalSelected": "Celkem vybráno: {count, number}",
     "applications": "Aplikace",
     "search": "Vyhledat",
-    "noSourceYet": "no source yet"
+    "noSourceYet": "zatím žádný zdroj"
 }

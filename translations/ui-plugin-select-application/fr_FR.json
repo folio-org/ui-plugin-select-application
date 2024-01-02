@@ -1,7 +1,7 @@
 {
     "meta.title": "Select application",
     "selectApplication": "Select application",
-    "name": "Name",
+    "name": "Nom",
     "applicationsFound": "{count, number} applications found",
     "totalSelected": "Total selected: {count, number}",
     "applications": "Applications",
