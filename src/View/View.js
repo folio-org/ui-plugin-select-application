@@ -208,7 +208,7 @@ export default function View({
                 <Pane
                   defaultWidth="25%"
                   footer={filterPanelFooter}
-                  renderHeader={<PaneHeader
+                  renderHeader={() => <PaneHeader
                     lastMenu={filterPanelLastMenu}
                     onClose={toggleFilterPane}
                     paneTitle={<FormattedMessage id="stripes-smart-components.searchAndFilter" />}
@@ -269,7 +269,7 @@ export default function View({
                   }
                   padContent={false}
                   renderHeader={
-                    <PaneHeader
+                    () => <PaneHeader
                       firstMenu={renderResultsFirstMenu(activeFilters)}
                       paneSub={renderResultsPaneSubtitle()}
                       paneTitle={<FormattedMessage id="ui-plugin-select-application.applications" />}

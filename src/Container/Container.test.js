@@ -6,14 +6,28 @@ import translationsProperties from '../../test/helpers';
 
 import Container from './Container';
 
+
 jest.mock('../View', () => () => <div>View</div>);
+
+jest.mock('@folio/stripes/core', () => {
+  const originalModule = jest.requireActual('@folio/stripes/core');
+  return { ...originalModule,
+    useStripes: jest.fn().mockReturnValue({
+      discovery: {
+        applications: {}
+      }
+    }) };
+});
+
 const onClose = jest.fn();
+const onSaveMock = jest.fn();
+const mockCheckedAppIdsMap = {};
 
 describe('Container', () => {
   let renderComponent;
   beforeEach(() => {
     renderComponent = renderWithIntl(
-      <MemoryRouter><Container onClose={onClose} onSelectApplication={jest.fn()} /></MemoryRouter>,
+      <MemoryRouter><Container checkedAppIdsMap={mockCheckedAppIdsMap} onClose={onClose} onSave={onSaveMock} onSelectApplication={jest.fn()} /></MemoryRouter>,
       translationsProperties
     );
   });

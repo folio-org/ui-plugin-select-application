@@ -27,6 +27,9 @@ const onNeedMoreData = jest.fn();
 const onSelectRow = jest.fn();
 const queryGetter = jest.fn();
 const querySetter = jest.fn();
+const onSaveMock = jest.fn();
+const checkedAppIdsMapMock = {};
+const onCloseMock = jest.fn();
 
 describe('View', () => {
   let renderComponent;
@@ -34,8 +37,11 @@ describe('View', () => {
     renderComponent = renderWithIntl(
       <MemoryRouter>
         <View
+          checkedAppIdsMap={checkedAppIdsMapMock}
           data={{ applications: mockApplications, total: 9 }}
+          onClose={onCloseMock}
           onNeedMoreData={onNeedMoreData}
+          onSave={onSaveMock}
           onSelectRow={onSelectRow}
           queryGetter={queryGetter}
           querySetter={querySetter}
