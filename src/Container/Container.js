@@ -1,36 +1,36 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { useStripes } from '@folio/stripes/core';
 import View from '../View';
 
-import mockApplications from './mockApplications';
-
 export default function Container({
-  onClose
+  onClose,
+  onSave,
+  checkedAppIdsMap
 }) {
   const [query, setQuery] = useState({});
   const querySetter = ({ nsValues }) => {
     setQuery({ ...query, ...nsValues });
   };
   const queryGetter = () => query;
-  const {
-    applications = [],
-    total: applicationsCount = 0
-  } = {
-    total: mockApplications.length,
-    applications: mockApplications,
-  };
+
+  const stripes = useStripes();
+
+  const applications = Object.values(stripes.discovery.applications).map(app => ({ id: app.name, name: app.name }));
 
   return (
     <View
+      checkedAppIdsMap={checkedAppIdsMap}
       data={{
         applications,
       }}
       onClose={onClose}
+      onSave={onSave}
       queryGetter={queryGetter}
       querySetter={querySetter}
       source={{ // Fake source from useQuery return values;
-        totalCount: () => applicationsCount,
+        totalCount: () => applications.length,
         loaded: () => true,
         pending: () => false,
         failure: () => false,
@@ -42,6 +42,8 @@ export default function Container({
 
 Container.propTypes = {
   onClose: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+  checkedAppIdsMap: PropTypes.object
 };
 
 

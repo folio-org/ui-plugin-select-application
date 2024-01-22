@@ -12,7 +12,10 @@ const onClose = jest.fn();
 describe('Container', () => {
   let renderComponent;
   beforeEach(() => {
-    renderComponent = renderWithIntl(<MemoryRouter><Container onClose={onClose} /></MemoryRouter>, translationsProperties);
+    renderComponent = renderWithIntl(
+      <MemoryRouter><Container onClose={onClose} onSelectApplication={jest.fn()} /></MemoryRouter>,
+      translationsProperties
+    );
   });
 
   it('renders View component', () => {

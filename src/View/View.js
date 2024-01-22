@@ -13,7 +13,8 @@ import {
   Paneset,
   PaneFooter,
   Checkbox,
-  EmptyMessage
+  EmptyMessage,
+  PaneHeader
 } from '@folio/stripes/components';
 
 import {
@@ -34,12 +35,14 @@ export default function View({
   querySetter,
   source,
   visibleColumns = ['isChecked', 'name'],
-  onClose
+  onClose,
+  onSave,
+  checkedAppIdsMap
 }) {
   const intl = useIntl();
 
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
-  const [checkedIdsMap, setCheckedIdsMap] = useState({});
+  const [checkedIdsMap, setCheckedIdsMap] = useState({ ...checkedAppIdsMap });
 
   const toggleChecked = (id) => {
     if (id in checkedIdsMap) {
@@ -205,9 +208,11 @@ export default function View({
                 <Pane
                   defaultWidth="25%"
                   footer={filterPanelFooter}
-                  lastMenu={filterPanelLastMenu}
-                  onClose={toggleFilterPane}
-                  paneTitle={<FormattedMessage id="stripes-smart-components.searchAndFilter" />}
+                  renderHeader={<PaneHeader
+                    lastMenu={filterPanelLastMenu}
+                    onClose={toggleFilterPane}
+                    paneTitle={<FormattedMessage id="stripes-smart-components.searchAndFilter" />}
+                  />}
                 >
                   <form onSubmit={onSubmitSearch}>
                     <div className={css.searchGroupWrap}>
@@ -256,16 +261,20 @@ export default function View({
                 }
                 <Pane
                   defaultWidth="fill"
-                  firstMenu={renderResultsFirstMenu(activeFilters)}
                   footer={
                     <PaneFooter
-                      renderEnd={<Button buttonStyle="primary" onClick={onClose}><FormattedMessage id="stripes-core.button.saveAndClose" /></Button>}
+                      renderEnd={<Button buttonStyle="primary" onClick={() => onSave(checkedIdsMap, onClose)}><FormattedMessage id="stripes-core.button.saveAndClose" /></Button>}
                       renderStart={<div style={{ alignText: 'right', display:'block' }}><FormattedMessage id="ui-plugin-select-application.totalSelected" values={{ count: Object.keys(checkedIdsMap).length }} /></div>}
                     />
                   }
                   padContent={false}
-                  paneSub={renderResultsPaneSubtitle()}
-                  paneTitle={<FormattedMessage id="ui-plugin-select-application.applications" />}
+                  renderHeader={
+                    <PaneHeader
+                      firstMenu={renderResultsFirstMenu(activeFilters)}
+                      paneSub={renderResultsPaneSubtitle()}
+                      paneTitle={<FormattedMessage id="ui-plugin-select-application.applications" />}
+                    />
+                  }
                 >
                   <MultiColumnList
                     autosize
@@ -302,6 +311,8 @@ View.propTypes = {
   querySetter: PropTypes.func,
   source: PropTypes.object,
   visibleColumns: PropTypes.arrayOf(PropTypes.string),
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+  checkedAppIdsMap: PropTypes.object
 };
 

@@ -8,7 +8,9 @@ import Modal from '../Modal';
 const triggerId = 'find-application-trigger';
 export default function ApplicationSearch(props) {
   const {
-    renderTrigger
+    renderTrigger,
+    onSave,
+    checkedAppIdsMap
   } = props;
 
   const modalRef = useRef();
@@ -52,8 +54,10 @@ export default function ApplicationSearch(props) {
     <>
       {renderTriggerButton()}
       <Modal
+        checkedAppIdsMap={checkedAppIdsMap}
         modalRef={modalRef}
         onClose={closeModal}
+        onSave={onSave}
         open={open}
         {...props}
       />
@@ -63,5 +67,7 @@ export default function ApplicationSearch(props) {
 
 ApplicationSearch.propTypes = {
   renderTrigger: PropTypes.func,
+  onSave: PropTypes.func,
+  checkedAppIdsMap: PropTypes.object
 };
 
