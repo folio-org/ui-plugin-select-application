@@ -74,7 +74,7 @@ export default function View({
     isChecked: (
       <Checkbox
         checked={isCheckedAll}
-        data-testid="select-all-applications"
+        data-testId="select-all-applications"
         onChange={() => { toggleCheckedAll(); }}
         type="checkbox"
       />
@@ -194,7 +194,7 @@ export default function View({
                       />
                       <Button
                         buttonStyle="primary"
-                        disabled={!searchValue.query || searchValue.query === ''}
+                        disabled={!searchValue.query}
                         fullWidth
                         id="clickable-search-applications"
                         marginBottom0
@@ -226,7 +226,7 @@ export default function View({
                   defaultWidth="fill"
                   footer={
                     <PaneFooter
-                      renderEnd={<Button buttonStyle="primary" onClick={() => onSave(checkedIdsMap, onClose)}><FormattedMessage id="stripes-core.button.saveAndClose" /></Button>}
+                      renderEnd={<Button buttonStyle="primary" data-testid="submit-applications-modal" onClick={() => onSave(checkedIdsMap, onClose)}><FormattedMessage id="stripes-core.button.saveAndClose" /></Button>}
                       renderStart={<div style={{ alignText: 'right', display:'block' }}><FormattedMessage id="ui-plugin-select-application.totalSelected" values={{ count: Object.keys(checkedIdsMap).length }} /></div>}
                     />
                   }

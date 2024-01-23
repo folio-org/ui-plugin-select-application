@@ -10,6 +10,7 @@ import {
   MultiColumnListRow
 } from '@folio/stripes-erm-testing';
 
+import userEvent from '@testing-library/user-event';
 import translationsProperties from '../../test/helpers';
 
 import View from './View';
@@ -28,7 +29,7 @@ describe('View', () => {
       <MemoryRouter>
         <View
           checkedAppIdsMap={{ 2: true }}
-          data={{ applications: mockApplications, total: 9 }}
+          data={{ applications: mockApplications }}
           onClose={onCloseMock}
           onSave={onSaveMock}
         />
@@ -78,5 +79,13 @@ describe('View', () => {
     await MultiColumnListRow({ indexRow: 'row-1' }).find(Checkbox({ checked: true })).click();
 
     await MultiColumnListRow({ indexRow: 'row-1' }).find(Checkbox({ checked: false })).exists();
+  });
+
+  it('calls onSave action on submit button', async () => {
+    const { getByTestId } = renderComponent;
+
+    await userEvent.click(getByTestId('submit-applications-modal'));
+
+    expect(onSaveMock).toHaveBeenCalled();
   });
 });
