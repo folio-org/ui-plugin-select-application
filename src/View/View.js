@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { noop } from 'lodash';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import {
@@ -13,13 +12,11 @@ import {
   Paneset,
   PaneFooter,
   Checkbox,
-  EmptyMessage,
   PaneHeader
 } from '@folio/stripes/components';
 
 import {
   SearchAndSortQuery,
-  SearchAndSortNoResultsMessage as NoResultsMessage,
   SearchAndSortSearchButton as FilterPaneToggle,
   CollapseFilterPaneButton
 } from '@folio/stripes/smart-components';
@@ -30,11 +27,7 @@ import css from './View.css';
 
 export default function View({
   contentRef,
-  data = {},
-  queryGetter,
-  querySetter,
-  source,
-  visibleColumns = ['isChecked', 'name'],
+  data,
   onClose,
   onSave,
   checkedAppIdsMap
@@ -77,13 +70,11 @@ export default function View({
     }
   }, []);
 
-  const query = queryGetter() || {};
-  const count = source ? source.totalCount() : 0;
-
   const columnMapping = {
     isChecked: (
       <Checkbox
         checked={isCheckedAll}
+        data-testid="select-all-applications"
         onChange={() => { toggleCheckedAll(); }}
         type="checkbox"
       />
@@ -107,7 +98,7 @@ export default function View({
   };
 
   const rowFormatter = (row) => {
-    const { rowClass, rowData, rowIndex, rowProps = {}, cells } = row;
+    const { rowClass, rowData, rowIndex = {}, rowProps, cells } = row;
 
     return (
       <button
@@ -126,23 +117,6 @@ export default function View({
 
   const toggleFilterPane = () => {
     setFilterPaneIsVisible(!filterPaneIsVisible);
-  };
-
-  const renderIsEmptyMessage = () => {
-    if (!source) {
-      return <EmptyMessage><FormattedMessage id="ui-plugin-select-application.noSourceYet" /></EmptyMessage>;
-    }
-
-    return (
-      <div data-testId="no-results-message">
-        <NoResultsMessage
-          filterPaneIsVisible
-          searchTerm={query.query || ''}
-          source={source}
-          toggleFilterPane={noop}
-        />
-      </div>
-    );
   };
 
   const renderResultsFirstMenu = (filters) => {
@@ -164,13 +138,7 @@ export default function View({
     );
   };
 
-  const renderResultsPaneSubtitle = () => {
-    if (source && source.loaded()) {
-      return <FormattedMessage id="ui-plugin-select-application.applicationsFound" values={{ count }} />;
-    }
-
-    return <FormattedMessage id="stripes-smart-components.searchCriteria" />;
-  };
+  const renderResultsPaneSubtitle = <FormattedMessage id="ui-plugin-select-application.applicationsFound" values={{ count:data.applications.length }} />;
 
   const filterPanelFooter = <PaneFooter renderStart={
     <Button onClick={onClose}><FormattedMessage id="stripes-core.button.cancel" /></Button>
@@ -183,12 +151,7 @@ export default function View({
     <div ref={contentRef} data-testId="search-applications-testId">
       <SearchAndSortQuery
         initialFilterState={{ status: [] }}
-        initialSearchState={{ query: '' }}
         initialSortState={{ sort: 'name' }}
-        queryGetter={queryGetter}
-        querySetter={querySetter}
-        setQueryOnMount
-        syncToLocationSearch={false}
       >
         {
           ({
@@ -271,7 +234,7 @@ export default function View({
                   renderHeader={
                     () => <PaneHeader
                       firstMenu={renderResultsFirstMenu(activeFilters)}
-                      paneSub={renderResultsPaneSubtitle()}
+                      paneSub={renderResultsPaneSubtitle}
                       paneTitle={<FormattedMessage id="ui-plugin-select-application.applications" />}
                     />
                   }
@@ -284,11 +247,10 @@ export default function View({
                     formatter={formatter}
                     id="list-applications"
                     interactive={false}
-                    isEmptyMessage={renderIsEmptyMessage()}
                     rowFormatter={rowFormatter}
-                    totalCount={count}
+                    totalCount={data.applications.length}
                     virtualize
-                    visibleColumns={visibleColumns}
+                    visibleColumns={['isChecked', 'name']}
                   />
                 </Pane>
               </Paneset>

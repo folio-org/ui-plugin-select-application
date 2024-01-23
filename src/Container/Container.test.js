@@ -1,7 +1,8 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
 
-import { renderWithIntl } from '@folio/stripes-erm-testing';
+import { renderWithIntl, MultiColumnList } from '@folio/stripes-erm-testing';
+
 import translationsProperties from '../../test/helpers';
 
 import Container from './Container';
@@ -14,7 +15,10 @@ jest.mock('@folio/stripes/core', () => {
   return { ...originalModule,
     useStripes: jest.fn().mockReturnValue({
       discovery: {
-        applications: {}
+        applications: {
+          'app1': { name: 'app1' },
+          'app2': { name: 'app2' }
+        }
       }
     }) };
 });
@@ -32,10 +36,18 @@ describe('Container', () => {
     );
   });
 
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders View component', () => {
     const { getByText } = renderComponent;
 
     expect(getByText('View')).toBeInTheDocument();
+  });
+
+  it('renders expected rows', async () => {
+    await MultiColumnList({ rowCount: 2 }).exists;
   });
 });
 
