@@ -5,6 +5,6 @@
     "applicationsFound": "{count, number} applications found",
     "totalSelected": "Total selected: {count, number}",
     "applications": "Applications",
-    "search": "Search",
+    "search": "Szukaj",
     "noSourceYet": "no source yet"
 }
