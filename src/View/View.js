@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { noop } from 'lodash';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import {
@@ -13,12 +12,11 @@ import {
   Paneset,
   PaneFooter,
   Checkbox,
-  EmptyMessage
+  PaneHeader
 } from '@folio/stripes/components';
 
 import {
   SearchAndSortQuery,
-  SearchAndSortNoResultsMessage as NoResultsMessage,
   SearchAndSortSearchButton as FilterPaneToggle,
   CollapseFilterPaneButton
 } from '@folio/stripes/smart-components';
@@ -29,17 +27,15 @@ import css from './View.css';
 
 export default function View({
   contentRef,
-  data = {},
-  queryGetter,
-  querySetter,
-  source,
-  visibleColumns = ['isChecked', 'name'],
-  onClose
+  data,
+  onClose,
+  onSave,
+  checkedAppIdsMap
 }) {
   const intl = useIntl();
 
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
-  const [checkedIdsMap, setCheckedIdsMap] = useState({});
+  const [checkedIdsMap, setCheckedIdsMap] = useState({ ...checkedAppIdsMap });
 
   const toggleChecked = (id) => {
     if (id in checkedIdsMap) {
@@ -74,13 +70,11 @@ export default function View({
     }
   }, []);
 
-  const query = queryGetter() || {};
-  const count = source ? source.totalCount() : 0;
-
   const columnMapping = {
     isChecked: (
       <Checkbox
         checked={isCheckedAll}
+        data-testId="select-all-applications"
         onChange={() => { toggleCheckedAll(); }}
         type="checkbox"
       />
@@ -104,7 +98,7 @@ export default function View({
   };
 
   const rowFormatter = (row) => {
-    const { rowClass, rowData, rowIndex, rowProps = {}, cells } = row;
+    const { rowClass, rowData, rowIndex = {}, rowProps, cells } = row;
 
     return (
       <button
@@ -123,23 +117,6 @@ export default function View({
 
   const toggleFilterPane = () => {
     setFilterPaneIsVisible(!filterPaneIsVisible);
-  };
-
-  const renderIsEmptyMessage = () => {
-    if (!source) {
-      return <EmptyMessage><FormattedMessage id="ui-plugin-select-application.noSourceYet" /></EmptyMessage>;
-    }
-
-    return (
-      <div data-testId="no-results-message">
-        <NoResultsMessage
-          filterPaneIsVisible
-          searchTerm={query.query || ''}
-          source={source}
-          toggleFilterPane={noop}
-        />
-      </div>
-    );
   };
 
   const renderResultsFirstMenu = (filters) => {
@@ -161,13 +138,7 @@ export default function View({
     );
   };
 
-  const renderResultsPaneSubtitle = () => {
-    if (source && source.loaded()) {
-      return <FormattedMessage id="ui-plugin-select-application.applicationsFound" values={{ count }} />;
-    }
-
-    return <FormattedMessage id="stripes-smart-components.searchCriteria" />;
-  };
+  const renderResultsPaneSubtitle = <FormattedMessage id="ui-plugin-select-application.applicationsFound" values={{ count:data.applications.length }} />;
 
   const filterPanelFooter = <PaneFooter renderStart={
     <Button onClick={onClose}><FormattedMessage id="stripes-core.button.cancel" /></Button>
@@ -180,12 +151,7 @@ export default function View({
     <div ref={contentRef} data-testId="search-applications-testId">
       <SearchAndSortQuery
         initialFilterState={{ status: [] }}
-        initialSearchState={{ query: '' }}
         initialSortState={{ sort: 'name' }}
-        queryGetter={queryGetter}
-        querySetter={querySetter}
-        setQueryOnMount
-        syncToLocationSearch={false}
       >
         {
           ({
@@ -205,9 +171,11 @@ export default function View({
                 <Pane
                   defaultWidth="25%"
                   footer={filterPanelFooter}
-                  lastMenu={filterPanelLastMenu}
-                  onClose={toggleFilterPane}
-                  paneTitle={<FormattedMessage id="stripes-smart-components.searchAndFilter" />}
+                  renderHeader={() => <PaneHeader
+                    lastMenu={filterPanelLastMenu}
+                    onClose={toggleFilterPane}
+                    paneTitle={<FormattedMessage id="stripes-smart-components.searchAndFilter" />}
+                  />}
                 >
                   <form onSubmit={onSubmitSearch}>
                     <div className={css.searchGroupWrap}>
@@ -226,7 +194,7 @@ export default function View({
                       />
                       <Button
                         buttonStyle="primary"
-                        disabled={!searchValue.query || searchValue.query === ''}
+                        disabled={!searchValue.query}
                         fullWidth
                         id="clickable-search-applications"
                         marginBottom0
@@ -256,16 +224,20 @@ export default function View({
                 }
                 <Pane
                   defaultWidth="fill"
-                  firstMenu={renderResultsFirstMenu(activeFilters)}
                   footer={
                     <PaneFooter
-                      renderEnd={<Button buttonStyle="primary" onClick={onClose}><FormattedMessage id="stripes-core.button.saveAndClose" /></Button>}
+                      renderEnd={<Button buttonStyle="primary" data-testid="submit-applications-modal" onClick={() => onSave(checkedIdsMap, onClose)}><FormattedMessage id="stripes-core.button.saveAndClose" /></Button>}
                       renderStart={<div style={{ alignText: 'right', display:'block' }}><FormattedMessage id="ui-plugin-select-application.totalSelected" values={{ count: Object.keys(checkedIdsMap).length }} /></div>}
                     />
                   }
                   padContent={false}
-                  paneSub={renderResultsPaneSubtitle()}
-                  paneTitle={<FormattedMessage id="ui-plugin-select-application.applications" />}
+                  renderHeader={
+                    () => <PaneHeader
+                      firstMenu={renderResultsFirstMenu(activeFilters)}
+                      paneSub={renderResultsPaneSubtitle}
+                      paneTitle={<FormattedMessage id="ui-plugin-select-application.applications" />}
+                    />
+                  }
                 >
                   <MultiColumnList
                     autosize
@@ -275,11 +247,10 @@ export default function View({
                     formatter={formatter}
                     id="list-applications"
                     interactive={false}
-                    isEmptyMessage={renderIsEmptyMessage()}
                     rowFormatter={rowFormatter}
-                    totalCount={count}
+                    totalCount={data.applications.length}
                     virtualize
-                    visibleColumns={visibleColumns}
+                    visibleColumns={['isChecked', 'name']}
                   />
                 </Pane>
               </Paneset>
@@ -302,6 +273,8 @@ View.propTypes = {
   querySetter: PropTypes.func,
   source: PropTypes.object,
   visibleColumns: PropTypes.arrayOf(PropTypes.string),
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+  checkedAppIdsMap: PropTypes.object
 };
 

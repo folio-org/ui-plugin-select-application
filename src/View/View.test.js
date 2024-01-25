@@ -5,8 +5,12 @@ import {
   Pane,
   renderWithIntl,
   SearchField,
+  MultiColumnListHeader,
+  Checkbox,
+  MultiColumnListRow
 } from '@folio/stripes-erm-testing';
 
+import userEvent from '@testing-library/user-event';
 import translationsProperties from '../../test/helpers';
 
 import View from './View';
@@ -15,18 +19,8 @@ import mockApplications from './testResources';
 
 jest.mock('../Filters', () => () => <div>Filters</div>);
 
-const source = {
-  'totalCount': () => {},
-  'loaded': () => {},
-  'pending': () => {},
-  'failure': () => {},
-  'failureMessage': () => {},
-};
-
-const onNeedMoreData = jest.fn();
-const onSelectRow = jest.fn();
-const queryGetter = jest.fn();
-const querySetter = jest.fn();
+const onSaveMock = jest.fn();
+const onCloseMock = jest.fn();
 
 describe('View', () => {
   let renderComponent;
@@ -34,41 +28,64 @@ describe('View', () => {
     renderComponent = renderWithIntl(
       <MemoryRouter>
         <View
-          data={{ applications: mockApplications, total: 9 }}
-          onNeedMoreData={onNeedMoreData}
-          onSelectRow={onSelectRow}
-          queryGetter={queryGetter}
-          querySetter={querySetter}
-          source={source}
-          visibleColumns={['', 'name']}
+          checkedAppIdsMap={{ 2: true }}
+          data={{ applications: mockApplications }}
+          onClose={onCloseMock}
+          onSave={onSaveMock}
         />
       </MemoryRouter>,
       translationsProperties
     );
   });
 
-  test('renders the Filters component', () => {
+  it('renders the Filters component', () => {
     const { getByText } = renderComponent;
     expect(getByText('Filters')).toBeInTheDocument();
   });
 
-  test('renders the expected Search and Filter Pane', async () => {
+  it('renders the expected Search and Filter Pane', async () => {
     await Pane('Search and filter').is({ visible: true });
   });
 
-  test('renders the expected search field', async () => {
+  it('renders the expected search field', async () => {
     await SearchField().has({ id: 'input-applications-search' });
   });
 
-  test('renders the expected MCL', async () => {
+  it('renders the expected MCL', async () => {
     await MultiColumnList('list-applications').exists();
   });
 
-  test('renders expected columns', async () => {
+  it('renders expected columns', async () => {
     await MultiColumnList({ columns: ['', 'Name'] }).exists();
   });
 
-  test('renders expected column count', async () => {
+  it('renders expected column count', async () => {
     await MultiColumnList({ columnCount: 2 }).exists();
+  });
+
+  it('selects all application rows on header checkbox click', async () => {
+    await MultiColumnListHeader({ id: 'list-column-ischecked' }).find(Checkbox({ checked: false })).click();
+
+    await MultiColumnListRow({ indexRow: 'row-0' }).find(Checkbox({ checked: true })).exists();
+  });
+
+  it('selects first row on checkbox click', async () => {
+    await MultiColumnListRow({ indexRow: 'row-0' }).find(Checkbox({ checked: false })).click();
+
+    await MultiColumnListRow({ indexRow: 'row-0' }).find(Checkbox({ checked: true })).exists();
+  });
+
+  it('unselects selected row', async () => {
+    await MultiColumnListRow({ indexRow: 'row-1' }).find(Checkbox({ checked: true })).click();
+
+    await MultiColumnListRow({ indexRow: 'row-1' }).find(Checkbox({ checked: false })).exists();
+  });
+
+  it('calls onSave action on submit button', async () => {
+    const { getByTestId } = renderComponent;
+
+    await userEvent.click(getByTestId('submit-applications-modal'));
+
+    expect(onSaveMock).toHaveBeenCalled();
   });
 });

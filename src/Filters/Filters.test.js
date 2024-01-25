@@ -17,11 +17,12 @@ const activeFilters = {
 };
 
 const stateMock = jest.fn();
+const mockClearGroup = jest.fn();
 
 const filterHandlers = {
   checkbox: () => {},
   clear: () => {},
-  clearGroup: () => {},
+  clearGroup: mockClearGroup,
   reset: () => {},
   state: stateMock
 };
@@ -41,5 +42,13 @@ describe('Filters', () => {
   it('renders Status Checkboxs', async () => {
     await Checkbox({ id: 'clickable-filter-status-selected' }).exists();
     await Checkbox({ id: 'clickable-filter-status-unselected' }).exists();
+  });
+
+  it('clear filter group on click is called', async () => {
+    await Checkbox({ id: 'clickable-filter-status-selected' }).click();
+    await Checkbox({ id: 'clickable-filter-status-unselected' }).click();
+
+    await Checkbox({ id: 'clickable-filter-status-selected', checked: true }).exists;
+    await Checkbox({ id: 'clickable-filter-status-unselected', checked: true }).exists;
   });
 });
