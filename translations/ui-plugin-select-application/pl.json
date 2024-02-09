@@ -3,7 +3,7 @@
     "selectApplication": "Select application",
     "name": "Nazwa",
     "applicationsFound": "{count, number} applications found",
-    "totalSelected": "Total selected: {count, number}",
+    "totalSelected": "Razem wybranych: {count, number}",
     "applications": "Applications",
     "search": "Szukaj",
     "noSourceYet": "no source yet"
