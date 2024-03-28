@@ -10,7 +10,8 @@ import {
   MultiColumnListRow
 } from '@folio/stripes-erm-testing';
 
-import userEvent from '@testing-library/user-event';
+import { act } from '@folio/jest-config-stripes/testing-library/react';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import translationsProperties from '../../test/helpers';
 
 import View from './View';
@@ -64,19 +65,25 @@ describe('View', () => {
   });
 
   it('selects all application rows on header checkbox click', async () => {
-    await MultiColumnListHeader({ id: 'list-column-ischecked' }).find(Checkbox({ checked: false })).click();
+    await act(async () => {
+      await MultiColumnListHeader({ id: 'list-column-ischecked' }).find(Checkbox({ checked: false })).click();
+    });
 
     await MultiColumnListRow({ indexRow: 'row-0' }).find(Checkbox({ checked: true })).exists();
   });
 
   it('selects first row on checkbox click', async () => {
-    await MultiColumnListRow({ indexRow: 'row-0' }).find(Checkbox({ checked: false })).click();
+    await act(async () => {
+      await MultiColumnListRow({ indexRow: 'row-0' }).find(Checkbox({ checked: false })).click();
+    });
 
     await MultiColumnListRow({ indexRow: 'row-0' }).find(Checkbox({ checked: true })).exists();
   });
 
   it('unselects selected row', async () => {
-    await MultiColumnListRow({ indexRow: 'row-1' }).find(Checkbox({ checked: true })).click();
+    await act(async () => {
+      await MultiColumnListRow({ indexRow: 'row-1' }).find(Checkbox({ checked: true })).click();
+    });
 
     await MultiColumnListRow({ indexRow: 'row-1' }).find(Checkbox({ checked: false })).exists();
   });
@@ -84,7 +91,9 @@ describe('View', () => {
   it('calls onSave action on submit button', async () => {
     const { getByTestId } = renderComponent;
 
-    await userEvent.click(getByTestId('submit-applications-modal'));
+    await act(async () => {
+      await userEvent.click(getByTestId('submit-applications-modal'));
+    });
 
     expect(onSaveMock).toHaveBeenCalled();
   });

@@ -74,7 +74,7 @@ export default function View({
     isChecked: (
       <Checkbox
         checked={isCheckedAll}
-        data-testId="select-all-applications"
+        data-testid="select-all-applications"
         onChange={() => { toggleCheckedAll(); }}
         type="checkbox"
       />
@@ -148,7 +148,7 @@ export default function View({
   const filterPanelLastMenu = <PaneMenu><CollapseFilterPaneButton onClick={toggleFilterPane} /></PaneMenu>;
 
   return (
-    <div ref={contentRef} data-testId="search-applications-testId">
+    <div ref={contentRef} data-testid="search-applications-testId">
       <SearchAndSortQuery
         initialFilterState={{ status: [] }}
         initialSortState={{ sort: 'name' }}
