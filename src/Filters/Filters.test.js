@@ -39,7 +39,8 @@ describe('Filters', () => {
           data={{}}
           filterHandlers={filterHandlers}
         />
-      </MemoryRouter>, translationsProperties);
+      </MemoryRouter>, translationsProperties
+    );
   });
 
   test('renders the Status Accordion', async () => {
