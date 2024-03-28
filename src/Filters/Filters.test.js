@@ -32,7 +32,15 @@ describe('Filters', () => {
   let renderComponent;
 
   beforeEach(() => {
-    renderComponent = renderWithIntl(<MemoryRouter><Filters activeFilters={activeFilters} filterHandlers={filterHandlers} /></MemoryRouter>, translationsProperties);
+    renderComponent = renderWithIntl(
+      <MemoryRouter>
+        <Filters
+          activeFilters={activeFilters}
+          data={{}}
+          filterHandlers={filterHandlers}
+        />
+      </MemoryRouter>, translationsProperties
+    );
   });
 
   test('renders the Status Accordion', async () => {
