@@ -1,10 +1,10 @@
 {
-    "meta.title": "Select application",
-    "selectApplication": "Select application",
-    "name": "Name",
-    "applicationsFound": "{count, number} applications found",
-    "totalSelected": "Total selected: {count, number}",
-    "applications": "Applications",
-    "search": "Search",
-    "noSourceYet": "no source yet"
+    "meta.title": "選擇應用程式",
+    "selectApplication": "選擇應用程式",
+    "name": "名稱",
+    "applicationsFound": "找到{count, number}個應用程式",
+    "totalSelected": "所選總數： {count, number}",
+    "applications": "應用程式",
+    "search": "搜尋",
+    "noSourceYet": "還沒有來源"
 }
