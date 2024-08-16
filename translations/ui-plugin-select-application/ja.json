@@ -4,7 +4,7 @@
     "name": "名前",
     "applicationsFound": "{count, number} applications found",
     "totalSelected": "Total selected: {count, number}",
-    "applications": "Applications",
-    "search": "Search",
+    "applications": "アプリケーション",
+    "search": "検索",
     "noSourceYet": "no source yet"
 }
