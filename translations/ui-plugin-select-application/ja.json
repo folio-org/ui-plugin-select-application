@@ -1,9 +1,9 @@
 {
-    "meta.title": "Select application",
-    "selectApplication": "Select application",
+    "meta.title": "アプリケーションの選択",
+    "selectApplication": "アプリケーションの選択",
     "name": "名前",
     "applicationsFound": "{count, number} applications found",
-    "totalSelected": "Total selected: {count, number}",
+    "totalSelected": "選択済合計:  {count, number}",
     "applications": "アプリケーション",
     "search": "検索",
     "noSourceYet": "no source yet"
