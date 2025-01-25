@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   renderWithIntl,
   translationsProperties,
@@ -11,7 +9,7 @@ jest.mock('../Modal', () => () => <div>Modal</div>);
 
 const renderTrigger = jest.fn();
 
-describe('LicenseSearch', () => {
+describe('Search', () => {
   let renderComponent;
   beforeEach(() => {
     renderComponent = renderWithIntl(

@@ -1,4 +1,4 @@
-import React from 'react';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
 import {
   renderWithIntl,
@@ -43,5 +43,14 @@ describe('Modal', () => {
   test('renders the expected heading name', () => {
     const { getByText } = renderComponent;
     expect(getByText('Select application')).toBeInTheDocument();
+  });
+
+  test('has no a11y violations according to axe', async () => {
+    expect.extend(toHaveNoViolations);
+
+    const { container } = renderComponent;
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
   });
 });
