@@ -1,4 +1,4 @@
-import React from 'react';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { MemoryRouter } from 'react-router';
 
 import { renderWithIntl, MultiColumnList } from '@folio/stripes-erm-testing';
@@ -49,9 +49,13 @@ describe('Container', () => {
   it('renders expected rows', async () => {
     await MultiColumnList({ rowCount: 2 }).exists;
   });
+
+  test('has no a11y violations according to axe', async () => {
+    expect.extend(toHaveNoViolations);
+
+    const { container } = renderComponent;
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
+  });
 });
-
-
-
-
-

@@ -1,4 +1,5 @@
 import { MemoryRouter } from 'react-router-dom';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
 import {
   MultiColumnList,
@@ -96,5 +97,14 @@ describe('View', () => {
     });
 
     expect(onSaveMock).toHaveBeenCalled();
+  });
+
+  it('has no a11y violations according to axe', async () => {
+    expect.extend(toHaveNoViolations);
+
+    const { container } = renderComponent;
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
   });
 });
