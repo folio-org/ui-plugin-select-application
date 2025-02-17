@@ -77,6 +77,7 @@ export default function View({
         data-testid="select-all-applications"
         onChange={() => { toggleCheckedAll(); }}
         type="checkbox"
+        aria-label={intl.formatMessage({ id:"ui-plugin-select-application.selectAll"})}
       />
     ),
     name: intl.formatMessage({ id:'ui-plugin-select-application.name' })
@@ -92,6 +93,7 @@ export default function View({
         checked={application.id in checkedIdsMap}
         onChange={() => toggleChecked(application.id)}
         type="checkbox"
+        aria-label={application.name}
       />
     ),
     name: ({ name }) => <>{name}</>
@@ -99,19 +101,17 @@ export default function View({
 
   const rowFormatter = (row) => {
     const { rowClass, rowData, rowIndex = {}, rowProps, cells } = row;
+    const rowLabel = [rowData.name].join('...');
 
     return (
-      <button
+      <div
         key={`row-${rowIndex}`}
         className={rowClass}
-        data-label={[
-          rowData.name,
-        ].join('...')}
-        type="button"
+        data-label={rowLabel}
         {...rowProps}
       >
         {cells}
-      </button>
+      </div>
     );
   };
 
@@ -193,6 +193,7 @@ export default function View({
                         value={searchValue.query}
                       />
                       <Button
+                        aria-label={intl.formatMessage({ id:'stripes-smart-components.search' })}
                         buttonStyle="primary"
                         disabled={!searchValue.query}
                         fullWidth
@@ -226,13 +227,22 @@ export default function View({
                   defaultWidth="fill"
                   footer={
                     <PaneFooter
-                      renderEnd={<Button buttonStyle="primary" data-testid="submit-applications-modal" onClick={() => onSave(checkedIdsMap, onClose)}><FormattedMessage id="stripes-core.button.saveAndClose" /></Button>}
-                      renderStart={<div style={{ alignText: 'right', display:'block' }}><FormattedMessage id="ui-plugin-select-application.totalSelected" values={{ count: Object.keys(checkedIdsMap).length }} /></div>}
+                      renderEnd={
+                        <Button aria-label={intl.formatMessage({ id: 'stripes-core.button.saveAndClose' })} buttonStyle="primary" data-testid="submit-applications-modal" onClick={() => onSave(checkedIdsMap, onClose)}>
+                          <FormattedMessage id="stripes-core.button.saveAndClose" />
+                        </Button>
+                      }
+                      renderStart={
+                        <div style={{ alignText: 'right', display:'block' }}>
+                          <FormattedMessage id="ui-plugin-select-application.totalSelected" values={{ count: Object.keys(checkedIdsMap).length }} />
+                        </div>
+                      }
                     />
                   }
                   padContent={false}
                   renderHeader={
                     () => <PaneHeader
+                      id={<FormattedMessage id="ui-plugin-select-application.applications" />}
                       firstMenu={renderResultsFirstMenu(activeFilters)}
                       paneSub={renderResultsPaneSubtitle}
                       paneTitle={<FormattedMessage id="ui-plugin-select-application.applications" />}
@@ -240,6 +250,7 @@ export default function View({
                   }
                 >
                   <MultiColumnList
+                    ariaLabel={intl.formatMessage({ id:'ui-plugin-select-application.listOfApplications' })}
                     autosize
                     columnMapping={columnMapping}
                     columnWidths={columnWidths}
