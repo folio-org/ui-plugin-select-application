@@ -84,6 +84,7 @@ export default function View({
   };
 
   const columnWidths = {
+    isChecked: 40,
     name: 300,
   };
 
