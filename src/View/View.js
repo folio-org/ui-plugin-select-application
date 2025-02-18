@@ -73,11 +73,11 @@ export default function View({
   const columnMapping = {
     isChecked: (
       <Checkbox
+        aria-label={intl.formatMessage({ id:'ui-plugin-select-application.selectAll' })}
         checked={isCheckedAll}
         data-testid="select-all-applications"
         onChange={() => { toggleCheckedAll(); }}
         type="checkbox"
-        aria-label={intl.formatMessage({ id:"ui-plugin-select-application.selectAll"})}
       />
     ),
     name: intl.formatMessage({ id:'ui-plugin-select-application.name' })
@@ -91,10 +91,10 @@ export default function View({
   const formatter = {
     isChecked: application => (
       <Checkbox
+        aria-label={application.name}
         checked={application.id in checkedIdsMap}
         onChange={() => toggleChecked(application.id)}
         type="checkbox"
-        aria-label={application.name}
       />
     ),
     name: ({ name }) => <>{name}</>
@@ -243,8 +243,8 @@ export default function View({
                   padContent={false}
                   renderHeader={
                     () => <PaneHeader
-                      id={<FormattedMessage id="ui-plugin-select-application.applications" />}
                       firstMenu={renderResultsFirstMenu(activeFilters)}
+                      id={<FormattedMessage id="ui-plugin-select-application.applications" />}
                       paneSub={renderResultsPaneSubtitle}
                       paneTitle={<FormattedMessage id="ui-plugin-select-application.applications" />}
                     />
