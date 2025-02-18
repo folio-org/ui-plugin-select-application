@@ -194,7 +194,6 @@ export default function View({
                         value={searchValue.query}
                       />
                       <Button
-                        aria-label={intl.formatMessage({ id:'stripes-smart-components.search' })}
                         buttonStyle="primary"
                         disabled={!searchValue.query}
                         fullWidth
@@ -229,7 +228,7 @@ export default function View({
                   footer={
                     <PaneFooter
                       renderEnd={
-                        <Button aria-label={intl.formatMessage({ id: 'stripes-core.button.saveAndClose' })} buttonStyle="primary" data-testid="submit-applications-modal" onClick={() => onSave(checkedIdsMap, onClose)}>
+                        <Button buttonStyle="primary" data-testid="submit-applications-modal" onClick={() => onSave(checkedIdsMap, onClose)}>
                           <FormattedMessage id="stripes-core.button.saveAndClose" />
                         </Button>
                       }
@@ -251,7 +250,6 @@ export default function View({
                   }
                 >
                   <MultiColumnList
-                    ariaLabel={intl.formatMessage({ id:'ui-plugin-select-application.listOfApplications' })}
                     autosize
                     columnMapping={columnMapping}
                     columnWidths={columnWidths}
