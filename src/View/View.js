@@ -73,6 +73,7 @@ export default function View({
   const columnMapping = {
     isChecked: (
       <Checkbox
+        aria-label={intl.formatMessage({ id:'ui-plugin-select-application.selectAll' })}
         checked={isCheckedAll}
         data-testid="select-all-applications"
         onChange={() => { toggleCheckedAll(); }}
@@ -83,12 +84,14 @@ export default function View({
   };
 
   const columnWidths = {
+    isChecked: 40,
     name: 300,
   };
 
   const formatter = {
     isChecked: application => (
       <Checkbox
+        aria-label={application.name}
         checked={application.id in checkedIdsMap}
         onChange={() => toggleChecked(application.id)}
         type="checkbox"
@@ -99,19 +102,17 @@ export default function View({
 
   const rowFormatter = (row) => {
     const { rowClass, rowData, rowIndex = {}, rowProps, cells } = row;
+    const rowLabel = [rowData.name].join('...');
 
     return (
-      <button
+      <div
         key={`row-${rowIndex}`}
         className={rowClass}
-        data-label={[
-          rowData.name,
-        ].join('...')}
-        type="button"
+        data-label={rowLabel}
         {...rowProps}
       >
         {cells}
-      </button>
+      </div>
     );
   };
 
@@ -226,14 +227,23 @@ export default function View({
                   defaultWidth="fill"
                   footer={
                     <PaneFooter
-                      renderEnd={<Button buttonStyle="primary" data-testid="submit-applications-modal" onClick={() => onSave(checkedIdsMap, onClose)}><FormattedMessage id="stripes-core.button.saveAndClose" /></Button>}
-                      renderStart={<div style={{ alignText: 'right', display:'block' }}><FormattedMessage id="ui-plugin-select-application.totalSelected" values={{ count: Object.keys(checkedIdsMap).length }} /></div>}
+                      renderEnd={
+                        <Button buttonStyle="primary" data-testid="submit-applications-modal" onClick={() => onSave(checkedIdsMap, onClose)}>
+                          <FormattedMessage id="stripes-core.button.saveAndClose" />
+                        </Button>
+                      }
+                      renderStart={
+                        <div style={{ alignText: 'right', display:'block' }}>
+                          <FormattedMessage id="ui-plugin-select-application.totalSelected" values={{ count: Object.keys(checkedIdsMap).length }} />
+                        </div>
+                      }
                     />
                   }
                   padContent={false}
                   renderHeader={
                     () => <PaneHeader
                       firstMenu={renderResultsFirstMenu(activeFilters)}
+                      id={<FormattedMessage id="ui-plugin-select-application.applications" />}
                       paneSub={renderResultsPaneSubtitle}
                       paneTitle={<FormattedMessage id="ui-plugin-select-application.applications" />}
                     />

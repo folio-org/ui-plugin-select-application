@@ -1,4 +1,5 @@
 import { MemoryRouter } from 'react-router-dom';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
 import {
   Accordion,
@@ -58,5 +59,14 @@ describe('Filters', () => {
 
     await Checkbox({ id: 'clickable-filter-status-selected', checked: true }).exists;
     await Checkbox({ id: 'clickable-filter-status-unselected', checked: true }).exists;
+  });
+
+  test('has no a11y violations according to axe', async () => {
+    expect.extend(toHaveNoViolations);
+
+    const { container } = renderComponent;
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
   });
 });
