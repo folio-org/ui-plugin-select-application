@@ -1,8 +1,12 @@
 # Change history for ui-plugin-select-application
 
+## 2.0.0 (IN PROGRESS)
+
+* *BREAKING* migrate react-intl to v7. Refs UIPSELAPP-10.
+
 ## 1.1.0 (IN PROGRESS)
 
-* Add Deque Axe a11y tests. Refs UISELAPP7. 
+* Add Deque Axe a11y tests. Refs UIPSELAPP-7. 
 
 ## [1.0.0](https://github.com/folio-org/ui-plugin-select-application/tree/v1.0.0) (2024-04-24)
 [Full Changelog](https://github.com/folio-org/stripes-core/compare/v1.0.0...v0.1.0)
