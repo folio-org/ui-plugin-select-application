@@ -3,6 +3,7 @@
 ## 2.0.0 (IN PROGRESS)
 
 * *BREAKING* migrate react-intl to v7. Refs UIPSELAPP-10.
+* *BREAKING* migrate stripes dependencies to their Sunflower versions. Refs UIPSELAPP-12.
 
 ## 1.1.0 (IN PROGRESS)
 
