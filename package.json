@@ -32,8 +32,8 @@
     "@folio/jest-config-stripes": "^3.0.0",
     "@folio/stripes": "^10.0.0",
     "@folio/stripes-cli": "^4.0.0",
-    "@folio/stripes-erm-components": "^9.0.0",
-    "@folio/stripes-erm-testing": "^2.0.0",
+    "@folio/stripes-erm-components": "^10.0.0",
+    "@folio/stripes-erm-testing": "^3.0.0",
     "core-js": "^3.6.1",
     "graphql": "^16.0.0",
     "inflected": "^2.0.4",
@@ -60,7 +60,7 @@
   },
   "peerDependencies": {
     "@folio/stripes": "^10.0.0",
-    "@folio/stripes-erm-components": "^9.0.0",
+    "@folio/stripes-erm-components": "^10.0.0",
     "react": "^18.2.0",
     "react-intl": "^7.1.5",
     "react-router-dom": "^5.2.0"

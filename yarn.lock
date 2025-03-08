@@ -1187,33 +1187,15 @@
   resolved "https://registry.yarnpkg.com/@csstools/cascade-layer-name-parser/-/cascade-layer-name-parser-1.0.13.tgz#6900157489bc53da1f6a66eaccd432025f6cd6fb"
   integrity sha512-MX0yLTwtZzr82sQ0zOjqimpZbzjMaK/h2pmlrLK7DCzlmiZLYFpoO94WmN1akRVo6ll/TdpHb53vihHLUMyvng==
 
-"@csstools/color-helpers@^4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@csstools/color-helpers/-/color-helpers-4.2.1.tgz#da573554220ccb59757f12de62bf70c6b15645d4"
-  integrity sha512-CEypeeykO9AN7JWkr1OEOQb0HRzZlPWGwV0Ya6DuVgFdDi6g3ma/cPZ5ZPZM4AWQikDpq/0llnGGlIL+j8afzw==
-
 "@csstools/color-helpers@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@csstools/color-helpers/-/color-helpers-5.0.2.tgz#82592c9a7c2b83c293d9161894e2a6471feb97b8"
   integrity sha512-JqWH1vsgdGcw2RR6VliXXdA0/59LttzlU8UlRT/iUUsEeWfYq8I+K0yhihEUTTHLRm1EXvpsCx3083EU15ecsA==
 
-"@csstools/css-calc@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@csstools/css-calc/-/css-calc-1.2.4.tgz#9d9fb0dca33666cf97659f8f2c343ed0210e0e73"
-  integrity sha512-tfOuvUQeo7Hz+FcuOd3LfXVp+342pnWUJ7D2y8NUpu1Ww6xnTbHLpz018/y6rtbHifJ3iIEf9ttxXd8KG7nL0Q==
-
 "@csstools/css-calc@^2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@csstools/css-calc/-/css-calc-2.1.2.tgz#bffd55f002dab119b76d4023f95cd943e6c8c11e"
   integrity sha512-TklMyb3uBB28b5uQdxjReG4L80NxAqgrECqLZFQbyLekwwlcDDS8r3f07DKqeo8C4926Br0gf/ZDe17Zv4wIuw==
-
-"@csstools/css-color-parser@^2.0.4":
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/@csstools/css-color-parser/-/css-color-parser-2.0.5.tgz#ce1fe52f23f35f37bea2cf61ac865115aa17880a"
-  integrity sha512-lRZSmtl+DSjok3u9hTWpmkxFZnz7stkbZxzKc08aDUsdrWwhSgWo8yq9rq9DaFUtbAyAq2xnH92fj01S+pwIww==
-  dependencies:
-    "@csstools/color-helpers" "^4.2.1"
-    "@csstools/css-calc" "^1.2.4"
 
 "@csstools/css-color-parser@^3.0.8":
   version "3.0.8"
@@ -1223,7 +1205,7 @@
     "@csstools/color-helpers" "^5.0.2"
     "@csstools/css-calc" "^2.1.2"
 
-"@csstools/css-parser-algorithms@^2.2.0", "@csstools/css-parser-algorithms@^2.7.1":
+"@csstools/css-parser-algorithms@^2.2.0":
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/@csstools/css-parser-algorithms/-/css-parser-algorithms-2.7.1.tgz#6d93a8f7d8aeb7cd9ed0868f946e46f021b6aa70"
   integrity sha512-2SJS42gxmACHgikc1WGesXLIT8d/q2l0UFM7TaEeIzdFCE/FPMtTiizcPGGJtlPo2xuQzY09OhrLTzRxqJqwGw==
@@ -1233,7 +1215,7 @@
   resolved "https://registry.yarnpkg.com/@csstools/css-parser-algorithms/-/css-parser-algorithms-3.0.4.tgz#74426e93bd1c4dcab3e441f5cc7ba4fb35d94356"
   integrity sha512-Up7rBoV77rv29d3uKHUIVubz1BTcgyUK72IvCQAbfbMv584xHcGKCKbWh7i8hPrRJ7qU4Y8IO3IY9m+iTB7P3A==
 
-"@csstools/css-tokenizer@^2.1.1", "@csstools/css-tokenizer@^2.4.1":
+"@csstools/css-tokenizer@^2.1.1":
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@csstools/css-tokenizer/-/css-tokenizer-2.4.1.tgz#1d8b2e200197cf5f35ceb07ca2dade31f3a00ae8"
   integrity sha512-eQ9DIktFJBhGjioABJRtUucoWR2mwllurfnM8LuNGAqX3ViZXaUchqk+1s7jjtkFiT9ySdACsFEA3etErkALUg==
@@ -1248,22 +1230,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/media-query-list-parser/-/media-query-list-parser-2.1.13.tgz#f00be93f6bede07c14ddf51a168ad2748e4fe9e5"
   integrity sha512-XaHr+16KRU9Gf8XLi3q8kDlI18d5vzKSKCY510Vrtc9iNR0NJzbY9hhTmwhzYZj/ZwGL4VmB3TA9hJW0Um2qFA==
 
-"@csstools/postcss-global-data@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@csstools/postcss-global-data/-/postcss-global-data-2.1.1.tgz#b7250b5387f529cd3aa1a8dd966c1123f58c718b"
-  integrity sha512-tihdBLogY2G5jgUSu2jKSEVeOcnWqsz6k7UmPM7+ezhuV9FP5MIyX35Hc/YvqipQLRNsfBj9wRkBvsE7k1GM8A==
-
 "@csstools/postcss-global-data@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@csstools/postcss-global-data/-/postcss-global-data-3.0.0.tgz#c3b5380678de8fd5d9bf76e400ebdb95a60d0b94"
   integrity sha512-3dR5+RDhPW1uqPWZUyTBSVn03gGbxzoSyCEpXugy9UMtXeyKjrB84dX3V8eggzooCsX8wcraKehzdouNO+MlsA==
-
-"@csstools/postcss-progressive-custom-properties@^3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@csstools/postcss-progressive-custom-properties/-/postcss-progressive-custom-properties-3.3.0.tgz#20177d3fc61d8f170c4ee1686f3d2ab6eec27bbb"
-  integrity sha512-W2oV01phnILaRGYPmGFlL2MT/OgYjQDrL9sFlbdikMFi6oQkFki9B86XqEWR7HCsTZFVq7dbzr/o71B75TKkGg==
-  dependencies:
-    postcss-value-parser "^4.2.0"
 
 "@csstools/postcss-progressive-custom-properties@^4.0.0":
   version "4.0.0"
@@ -1271,17 +1241,6 @@
   integrity sha512-XQPtROaQjomnvLUSy/bALTR5VCtTVUFwYs1SblvYgLSeTo2a/bMNwUwo2piXw5rTv/FEYiy5yPSXBqg9OKUx7Q==
   dependencies:
     postcss-value-parser "^4.2.0"
-
-"@csstools/postcss-relative-color-syntax@^2.0.7":
-  version "2.0.19"
-  resolved "https://registry.yarnpkg.com/@csstools/postcss-relative-color-syntax/-/postcss-relative-color-syntax-2.0.19.tgz#246b3a782e88df58184943c2471209c3d2085d65"
-  integrity sha512-MxUMSNvio1WwuS6WRLlQuv6nNPXwIWUFzBBAvL/tBdWfiKjiJnAa6eSSN5gtaacSqUkQ/Ce5Z1OzLRfeaWhADA==
-  dependencies:
-    "@csstools/css-color-parser" "^2.0.4"
-    "@csstools/css-parser-algorithms" "^2.7.1"
-    "@csstools/css-tokenizer" "^2.4.1"
-    "@csstools/postcss-progressive-custom-properties" "^3.3.0"
-    "@csstools/utilities" "^1.0.0"
 
 "@csstools/postcss-relative-color-syntax@^3.0.7":
   version "3.0.8"
@@ -1293,11 +1252,6 @@
     "@csstools/css-tokenizer" "^3.0.3"
     "@csstools/postcss-progressive-custom-properties" "^4.0.0"
     "@csstools/utilities" "^2.0.0"
-
-"@csstools/utilities@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@csstools/utilities/-/utilities-1.0.0.tgz#42f3c213f2fb929324d465684ab9f46a0febd4bb"
-  integrity sha512-tAgvZQe/t2mlvpNosA4+CkMiZ2azISW5WPAcdSalZlEjQvUfghHxfQcrCiK/7/CrfAWVxyM88kGFYO82heIGDg==
 
 "@csstools/utilities@^2.0.0":
   version "2.0.0"
@@ -1887,30 +1841,6 @@
   resolved "https://registry.yarnpkg.com/@ffmpeg-installer/win32-x64/-/win32-x64-4.1.0.tgz#17e8699b5798d4c60e36e2d6326a8ebe5e95a2c5"
   integrity sha512-Drt5u2vzDnIONf4ZEkKtFlbvwj6rI3kxw1Ck9fpudmtgaZIHD4ucsWB2lCZBXRxJgXR+2IMSti+4rtM4C4rXgg==
 
-"@folio/eslint-config-stripes@^7.1.0":
-  version "7.1.0"
-  resolved "https://repository.folio.org/repository/npm-folio/@folio/eslint-config-stripes/-/eslint-config-stripes-7.1.0.tgz#2127f0e6dd57cc057e3e3d2541ba8ecad075f56b"
-  integrity sha512-hBbyqHkfWA5306H+fsoT7dtt6CZMhLJnot6x08Y9TFAT7RdR8bZ50SQgkw708LynxUCw5wVSiWrnvHV381fXXQ==
-  dependencies:
-    "@babel/core" "^7.18.13"
-    "@babel/eslint-parser" "^7.15.0"
-    "@folio/stripes-webpack" "^5.0.0"
-    "@typescript-eslint/eslint-plugin" "^6.21.0"
-    "@typescript-eslint/parser" "^6.21.0"
-    eslint "^7.32.0"
-    eslint-config-airbnb "18.2.1"
-    eslint-import-resolver-alias "^1.1.2"
-    eslint-import-resolver-webpack "^0.13.1"
-    eslint-plugin-babel "5.3.1"
-    eslint-plugin-import "2.26.0"
-    eslint-plugin-jest-dom "^4.0.2"
-    eslint-plugin-jsx-a11y "6.6.1"
-    eslint-plugin-no-only-tests "^3.0.0"
-    eslint-plugin-react "7.30.1"
-    eslint-plugin-react-hooks "4.6.0"
-    eslint-plugin-testing-library "^5.6.0"
-    webpack "^5.80.0"
-
 "@folio/eslint-config-stripes@^8.0.0":
   version "8.0.1"
   resolved "https://repository.folio.org/repository/npm-folio/@folio/eslint-config-stripes/-/eslint-config-stripes-8.0.1.tgz#e8287e603264a69608fa58acc6725be518b35d92"
@@ -1934,26 +1864,6 @@
     eslint-plugin-react-hooks "4.6.0"
     eslint-plugin-testing-library "^5.6.0"
     webpack "^5.80.0"
-
-"@folio/jest-config-stripes@^2.0.0":
-  version "2.0.0"
-  resolved "https://repository.folio.org/repository/npm-folio/@folio/jest-config-stripes/-/jest-config-stripes-2.0.0.tgz#ce7195397cc8d33e6e6686a4b3017019e5944d02"
-  integrity sha512-q7XRnOjp+uXJhxSDb/04e1dOOUeMrge8OYByrQeEcB3fz/TGsvqWl3k+vKRMm0OERPHgl6b4WcAYa5o+xQ7d9g==
-  dependencies:
-    "@jest/globals" "^29.5.0"
-    "@testing-library/dom" "^9.3.0"
-    "@testing-library/jest-dom" "^5.16.5"
-    "@testing-library/react" "^14.0.0"
-    "@testing-library/user-event" "^14.4.3"
-    babel-jest "^29.5.0"
-    babel-plugin-module-resolver "^5.0.0"
-    jest "^29.5.0"
-    jest-canvas-mock "^2.5.1"
-    jest-css-modules "^2.1.0"
-    jest-environment-jsdom "^29.5.0"
-    jest-junit "^16.0.0"
-    jest-location-mock "^1.0.9"
-    jsdom "^22.1.0"
 
 "@folio/jest-config-stripes@^3.0.0":
   version "3.0.2"
@@ -2108,12 +2018,12 @@
     rxjs "^6.6.3"
     use-deep-compare "^1.1.0"
 
-"@folio/stripes-erm-components@^9.0.0":
-  version "9.2.1"
-  resolved "https://repository.folio.org/repository/npm-folio/@folio/stripes-erm-components/-/stripes-erm-components-9.2.1.tgz#bc1f8bbda5170af52fa0f0a4777102df3ab90bb0"
-  integrity sha512-KO4Z/xCxTk6NRI1MkIlWi02S7dbVPTdGrmnp8lv8ZcOxqMEX6vyjNAd0OYnrpoATsyO8mhg24c6OOX8TWk7fYg==
+"@folio/stripes-erm-components@^10.0.0":
+  version "10.0.109900000000194"
+  resolved "https://repository.folio.org/repository/npm-folioci/@folio/stripes-erm-components/-/stripes-erm-components-10.0.109900000000194.tgz#ba81ae27f3bf60d03b950c5dc229b2e2be5adebf"
+  integrity sha512-fiwcD99dNFb+nAm0ks6SuVOw8plnYiFg2gSXdFX7NlCOTs5g3/xPTTCagOIq4xSOgJ86vgd9f158TeIGVIIJRQ==
   dependencies:
-    "@k-int/stripes-kint-components" "^5.8.3"
+    "@k-int/stripes-kint-components" "^5.11.0"
     dayjs "^1.11.13"
     final-form "^4.18.4"
     final-form-arrays "^3.0.1"
@@ -2127,13 +2037,13 @@
     react-final-form-arrays "^3.1.0"
     validator "^13.11.0"
 
-"@folio/stripes-erm-testing@^2.0.0":
-  version "2.2.1"
-  resolved "https://repository.folio.org/repository/npm-folio/@folio/stripes-erm-testing/-/stripes-erm-testing-2.2.1.tgz#c930ff7dec46f6ebbd518c2320a8b4f13ca6a5ad"
-  integrity sha512-9ItzdJjiYD7zXYsvF72beAZEjcw0XBgsCUMoOeHzzHFNO9aq2FU/4g2DA63lWmh003/Z0DP9PZe4J34PGEyR0w==
+"@folio/stripes-erm-testing@^3.0.0":
+  version "3.0.10990000000079"
+  resolved "https://repository.folio.org/repository/npm-folioci/@folio/stripes-erm-testing/-/stripes-erm-testing-3.0.10990000000079.tgz#b44ce9faca2f5f6c4ccaf037ad665021ebf1b2a7"
+  integrity sha512-3vfAspeXXEJwSJgn5ZlpznBLeCIjzEtXEz0lpDNCItUPukn3RbZ4dKulUvFTcLpXpMN3Cd6L/ukivarRelzAzg==
   dependencies:
-    "@folio/jest-config-stripes" "^2.0.0"
-    "@folio/stripes-testing" "^4.7.0"
+    "@folio/jest-config-stripes" "^3.0.0"
+    "@folio/stripes-testing" "^5.0.0"
     "@interactors/html" "^1.0.0-rc1.4"
     cypress "12.0.0"
     date-fns "^2.16.1"
@@ -2145,7 +2055,7 @@
     react-dom "^18.2.0"
     react-final-form "^6.5.9"
     react-final-form-arrays "^3.1.4"
-    react-intl "^6.4.4"
+    react-intl "^7.1.5"
     react-query "^3.9.0"
     react-router "^5.2.0"
     react-router-dom "^5.2.0"
@@ -2225,10 +2135,10 @@
     element-is-visible "^1.0.0"
     minimist "^1.2.0"
 
-"@folio/stripes-testing@^4.7.0":
-  version "4.8.0"
-  resolved "https://repository.folio.org/repository/npm-folio/@folio/stripes-testing/-/stripes-testing-4.8.0.tgz#d567dff6ac7f024fda22a75f291c9c3d180b75d8"
-  integrity sha512-3mv7yQ/vT0HS9bg7IDh57cAhOHms+5MuLc5sbtYZywugqzQfZUpXayIxI300IbMuJmD/LasZ0rNMJSyR49DVSg==
+"@folio/stripes-testing@^5.0.0":
+  version "5.1.109900000000250"
+  resolved "https://repository.folio.org/repository/npm-folioci/@folio/stripes-testing/-/stripes-testing-5.1.109900000000250.tgz#cbccf141b276800cb555fab8c077dfae443bf193"
+  integrity sha512-nycRj1qpxMinc6OXFv1qzYWjUriafSoMcesxLgqKwFr5nPDuKM3MDkpJzNpojiReclAovG7Yp04Z47KVrfkkcQ==
   dependencies:
     "@babel/core" "^7.19.3"
     "@babel/eslint-parser" "^7.19.1"
@@ -2237,7 +2147,7 @@
     "@cypress/request" "2.88.7"
     "@cypress/webpack-batteries-included-preprocessor" "^3.0.5"
     "@cypress/webpack-preprocessor" "^5.4.4"
-    "@folio/eslint-config-stripes" "^7.1.0"
+    "@folio/eslint-config-stripes" "^8.0.0"
     "@interactors/html" "1.0.0"
     "@interactors/keyboard" "1.0.0"
     "@interactors/with-cypress" "1.0.0"
@@ -2269,6 +2179,7 @@
     json-2-csv "^5.0.1"
     lint-staged "^14.0.1"
     localforage "^1.9.0"
+    marcjs "^2.0.1"
     moment "^2.29.3"
     prettier "^3.0.2"
     tsx "3.14.0"
@@ -2301,73 +2212,6 @@
     json2csv "^4.2.1"
     lodash "^4.17.4"
     query-string "^7.1.2"
-
-"@folio/stripes-webpack@^5.0.0":
-  version "5.2.1"
-  resolved "https://repository.folio.org/repository/npm-folio/@folio/stripes-webpack/-/stripes-webpack-5.2.1.tgz#99801ac77f8cbfb31ab6234a077ee726ad102207"
-  integrity sha512-sQEIc+F8uGtxnpoWscqsRiIlTcpJyejTI8b/m9rICqxazbpnmNvAGrAWvFFoUQVI20D5p4Tynd+kYJ41PH2eJw==
-  dependencies:
-    "@babel/core" "^7.9.0"
-    "@babel/plugin-proposal-decorators" "^7.0.0"
-    "@babel/plugin-proposal-function-sent" "^7.0.0"
-    "@babel/plugin-proposal-throw-expressions" "^7.0.0"
-    "@babel/plugin-syntax-import-meta" "^7.0.0"
-    "@babel/plugin-transform-class-properties" "^7.0.0"
-    "@babel/plugin-transform-export-namespace-from" "^7.0.0"
-    "@babel/plugin-transform-numeric-separator" "^7.0.0"
-    "@babel/plugin-transform-private-methods" "^7.18.6"
-    "@babel/plugin-transform-private-property-in-object" "^7.21.0"
-    "@babel/preset-env" "^7.0.0"
-    "@babel/preset-flow" "^7.7.4"
-    "@babel/preset-react" "^7.9.0"
-    "@babel/preset-typescript" "^7.7.7"
-    "@babel/register" "^7.0.0"
-    "@cerner/duplicate-package-checker-webpack-plugin" "~2.1.0"
-    "@csstools/postcss-global-data" "^2.1.1"
-    "@csstools/postcss-relative-color-syntax" "^2.0.7"
-    "@pmmmwh/react-refresh-webpack-plugin" "^0.5.4"
-    "@svgr/webpack" "^8.1.0"
-    add-asset-html-webpack-plugin "^6.0.0"
-    autoprefixer "^10.4.13"
-    babel-loader "^9.1.3"
-    babel-plugin-remove-jsx-attributes "^0.0.2"
-    buffer "^6.0.3"
-    commander "^2.9.0"
-    connect-history-api-fallback "^1.3.0"
-    core-js "^3.6.1"
-    css-loader "^6.4.0"
-    csv-loader "^3.0.3"
-    debug "^4.0.1"
-    esbuild-loader "~3.0.1"
-    express "^4.14.0"
-    favicons "7.1.4"
-    favicons-webpack-plugin "^6.0.0"
-    handlebars "^4.7.7"
-    handlebars-loader "^1.7.1"
-    html-webpack-plugin "^5.3.2"
-    lodash "^4.17.21"
-    mini-css-extract-plugin "^2.7.6"
-    node-object-hash "^1.2.0"
-    postcss "^8.4.2"
-    postcss-custom-media "^9.0.1"
-    postcss-import "^15.0.1"
-    postcss-loader "^7.2.4"
-    process "^0.11.10"
-    react-refresh "^0.11.0"
-    regenerator-runtime "^0.13.3"
-    semver "^7.1.3"
-    serialize-javascript "^6.0.2"
-    source-map-loader "^4.0.0"
-    stream-browserify "^3.0.0"
-    style-loader "^3.3.0"
-    tapable "^1.0.0"
-    ts-loader "^9.4.1"
-    typescript "^5.3.3"
-    util-ex "^0.3.15"
-    webpack-dev-middleware "^5.2.1"
-    webpack-hot-middleware "^2.25.1"
-    webpack-remove-empty-scripts "^1.0.1"
-    webpack-virtual-modules "^0.4.3"
 
 "@folio/stripes-webpack@^6.0.0":
   version "6.0.0"
@@ -2545,24 +2389,6 @@
     "@formatjs/ecma402-abstract" "2.2.4"
     tslib "2"
 
-"@formatjs/intl-displaynames@6.8.5":
-  version "6.8.5"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-displaynames/-/intl-displaynames-6.8.5.tgz#e9cd778764209534795f2a579d0269b26631d1ae"
-  integrity sha512-85b+GdAKCsleS6cqVxf/Aw/uBd+20EM0wDpgaxzHo3RIR3bxF4xCJqH/Grbzx8CXurTgDDZHPdPdwJC+May41w==
-  dependencies:
-    "@formatjs/ecma402-abstract" "2.2.4"
-    "@formatjs/intl-localematcher" "0.5.8"
-    tslib "2"
-
-"@formatjs/intl-listformat@7.7.5":
-  version "7.7.5"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-listformat/-/intl-listformat-7.7.5.tgz#e7d9fd66b648bbe878f9c64fcba756f1634a7794"
-  integrity sha512-Wzes10SMNeYgnxYiKsda4rnHP3Q3II4XT2tZyOgnH5fWuHDtIkceuWlRQNsvrI3uiwP4hLqp2XdQTCsfkhXulg==
-  dependencies:
-    "@formatjs/ecma402-abstract" "2.2.4"
-    "@formatjs/intl-localematcher" "0.5.8"
-    tslib "2"
-
 "@formatjs/intl-localematcher@0.5.8":
   version "0.5.8"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-localematcher/-/intl-localematcher-0.5.8.tgz#b11bbd04bd3551f7cadcb1ef1e231822d0e3c97e"
@@ -2575,19 +2401,6 @@
   resolved "https://registry.yarnpkg.com/@formatjs/intl-localematcher/-/intl-localematcher-0.6.0.tgz#33cf0d33279572c990e02ab75a93122569878082"
   integrity sha512-4rB4g+3hESy1bHSBG3tDFaMY2CH67iT7yne1e+0CLTsGLDcmoEWWpJjjpWVaYgYfYuohIRuo0E+N536gd2ZHZA==
   dependencies:
-    tslib "2"
-
-"@formatjs/intl@2.10.15":
-  version "2.10.15"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-2.10.15.tgz#c592507512d7827c760b74bb8afc37629f89523a"
-  integrity sha512-i6+xVqT+6KCz7nBfk4ybMXmbKO36tKvbMKtgFz9KV+8idYFyFbfwKooYk8kGjyA5+T5f1kEPQM5IDLXucTAQ9g==
-  dependencies:
-    "@formatjs/ecma402-abstract" "2.2.4"
-    "@formatjs/fast-memoize" "2.2.3"
-    "@formatjs/icu-messageformat-parser" "2.9.4"
-    "@formatjs/intl-displaynames" "6.8.5"
-    "@formatjs/intl-listformat" "7.7.5"
-    intl-messageformat "10.7.7"
     tslib "2"
 
 "@formatjs/intl@3.1.4":
@@ -2980,7 +2793,7 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@k-int/stripes-kint-components@^5.1.1", "@k-int/stripes-kint-components@^5.8.3":
+"@k-int/stripes-kint-components@^5.1.1", "@k-int/stripes-kint-components@^5.11.0":
   version "5.15.0"
   resolved "https://registry.yarnpkg.com/@k-int/stripes-kint-components/-/stripes-kint-components-5.15.0.tgz#2162e14c8e662d6491c0502d241901d7ba9b667e"
   integrity sha512-qqpSSD4mZRLf2eIMv/2KXRDFOc7VAPrjBwtataq2Sq+YaIWVQswcGDSBXdtvwSOoLQkuGDq/qYtPTDNF+c1MFw==
@@ -3670,7 +3483,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.63.tgz#1788fa8da838dbb5f9ea994b834278205db6ca2b"
   integrity sha512-fAtCfv4jJg+ExtXhvCkCqUKZ+4ok/JQk01qDKhL5BDDoS3AxKXhV5/MAVUZyQnSEd2GT92fkgZl0pz0Q0AzcIQ==
 
-"@types/prop-types@*", "@types/prop-types@^15.7.3":
+"@types/prop-types@^15.7.3":
   version "15.7.14"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.14.tgz#1433419d73b2a7ebfc6918dcefd2ec0d5cd698f2"
   integrity sha512-gNMvNH49DJ7OJYv+KAKn0Xp45p8PLl6zo2YnvDIbTd4J6MER2BmWN49TG7n9LvkyihINxeKW8+3bfS2yDC9dzQ==
@@ -3702,14 +3515,6 @@
   resolved "https://registry.yarnpkg.com/@types/react/-/react-19.0.10.tgz#d0c66dafd862474190fe95ce11a68de69ed2b0eb"
   integrity sha512-JuRQ9KXLEjaUNjTWpzuR231Z2WpIwczOkBEIvbHNCzQefFIT0L8IqE6NV6ULLyC1SI/i234JnDoMkfg+RjQj2g==
   dependencies:
-    csstype "^3.0.2"
-
-"@types/react@16 || 17 || 18":
-  version "18.3.18"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.18.tgz#9b382c4cd32e13e463f97df07c2ee3bbcd26904b"
-  integrity sha512-t4yC+vtgnkYjNSKlFx1jkAhH8LgTo2N/7Qvi83kdEaUtMDiwpbLAktKDaAMlRcJ5eSxZkH74eEGt1ky31d7kfQ==
-  dependencies:
-    "@types/prop-types" "*"
     csstype "^3.0.2"
 
 "@types/responselike@^1.0.0":
@@ -4156,6 +3961,11 @@ abab@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.6.tgz#41b80f2c871d19686216b82309231cfd3cb3d291"
   integrity sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==
+
+abbrev@1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
+  integrity sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==
 
 abort-controller@^3.0.0:
   version "3.0.0"
@@ -4743,11 +4553,6 @@ babel-plugin-polyfill-regenerator@^0.6.1:
   integrity sha512-LiWSbl4CRSIa5x/JAU6jZiG9eit9w6mz+yVMFwDE83LAWvt0AfGBoZ7HS/mkhrKuh2ZlzfVZYKoLjXdqw6Yt7Q==
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.6.3"
-
-babel-plugin-remove-jsx-attributes@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/babel-plugin-remove-jsx-attributes/-/babel-plugin-remove-jsx-attributes-0.0.2.tgz#5174749800da5c3392ce7a61bdfa1a89120a0e9d"
-  integrity sha512-h1Q9mbEAgcHnxsjke4foGPPDJOP3ioK1ODrorP2JW3zJdw2cxPqr2vB+AvV4xp+wx3cnOmbvRPPts3l3ywItPA==
 
 babel-preset-current-node-syntax@^1.0.0:
   version "1.1.0"
@@ -9144,16 +8949,6 @@ intl-messageformat@10.7.15:
     "@formatjs/icu-messageformat-parser" "2.11.1"
     tslib "2"
 
-intl-messageformat@10.7.7:
-  version "10.7.7"
-  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-10.7.7.tgz#42085e1664729d02240a03346e31a2540b1112a0"
-  integrity sha512-F134jIoeYMro/3I0h08D0Yt4N9o9pjddU/4IIxMMURqbAtI2wu70X8hvG1V48W49zXHXv3RKSF/po+0fDfsGjA==
-  dependencies:
-    "@formatjs/ecma402-abstract" "2.2.4"
-    "@formatjs/fast-memoize" "2.2.3"
-    "@formatjs/icu-messageformat-parser" "2.9.4"
-    tslib "2"
-
 invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -10916,6 +10711,14 @@ map-stream@~0.1.0:
   resolved "https://registry.yarnpkg.com/map-stream/-/map-stream-0.1.0.tgz#e56aa94c4c8055a16404a0674b78f215f7c8e194"
   integrity sha512-CkYQrPYZfWnu/DAmVCpTSX/xHpKZ80eKh2lAkyA6AJTef6bW+6JpbQZN5rofum7da+SyN1bi5ctTm+lTfcCW3g==
 
+marcjs@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/marcjs/-/marcjs-2.0.1.tgz#817bc613904cba3eba12644745ca15f644bf74e6"
+  integrity sha512-p+Eo2Bh+REsAIkQFgSR1l0TSl/m+tiSJR1yRCyLKj+h3kUinwjd57ExUKOFI+iPmD7lBcY8jodnyL73TidZHOA==
+  dependencies:
+    he "^1.2.0"
+    nopt "^5.0.0"
+
 match-sorter@^6.0.2:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/match-sorter/-/match-sorter-6.4.0.tgz#ae9c166cb3c9efd337690b3160c0e28cb8377c13"
@@ -11438,6 +11241,13 @@ node-source-walk@^7.0.1:
   integrity sha512-3VW/8JpPqPvnJvseXowjZcirPisssnBuDikk6JIZ8jQzF7KJQX52iPFX4RYYxLycYH7IbMRSPUOga/esVjy5Yg==
   dependencies:
     "@babel/parser" "^7.26.7"
+
+nopt@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/nopt/-/nopt-5.0.0.tgz#530942bb58a512fccafe53fe210f13a25355dc88"
+  integrity sha512-Tbj67rffqceeLpcRXrT7vKAN8CwfPeIBgM7E6iBkmKLV7bEMwpGgYLGv0jACUsECaa/vuxP0IjEont6umdMgtQ==
+  dependencies:
+    abbrev "1"
 
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
@@ -12699,22 +12509,6 @@ react-image@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/react-image/-/react-image-4.1.0.tgz#92f2d4a809a178b3bf69acd7bad7da7aa5e7364c"
   integrity sha512-qwPNlelQe9Zy14K2pGWSwoL+vHsAwmJKS6gkotekDgRpcnRuzXNap00GfibD3eEPYu3WCPlyIUUNzcyHOrLHjw==
-
-react-intl@^6.4.4:
-  version "6.8.9"
-  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-6.8.9.tgz#ef36b2a19a0eb97afbeaeab9679273fcbf2ea261"
-  integrity sha512-TUfj5E7lyUDvz/GtovC9OMh441kBr08rtIbgh3p0R8iF3hVY+V2W9Am7rb8BpJ/29BH1utJOqOOhmvEVh3GfZg==
-  dependencies:
-    "@formatjs/ecma402-abstract" "2.2.4"
-    "@formatjs/icu-messageformat-parser" "2.9.4"
-    "@formatjs/intl" "2.10.15"
-    "@formatjs/intl-displaynames" "6.8.5"
-    "@formatjs/intl-listformat" "7.7.5"
-    "@types/hoist-non-react-statics" "3"
-    "@types/react" "16 || 17 || 18"
-    hoist-non-react-statics "3"
-    intl-messageformat "10.7.7"
-    tslib "2"
 
 react-intl@^7.1.5:
   version "7.1.6"
