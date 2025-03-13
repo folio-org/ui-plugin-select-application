@@ -1,8 +1,11 @@
 # Change history for ui-plugin-select-application
 
-## 2.0.0 (IN PROGRESS)
+## 2.0.1 (IN PROGRESS)
+
+## 2.0.0
 
 * *BREAKING* migrate react-intl to v7. Refs UIPSELAPP-10.
+* [Full Changelog](https://github.com/folio-org/stripes-core/compare/v2.0.0...v1.0.1)
 
 ## 1.1.0 (IN PROGRESS)
 
