@@ -3,7 +3,7 @@
     "selectApplication": "選擇應用程式",
     "name": "名稱",
     "applicationsFound": "找到{count, number}個應用程式",
-    "totalSelected": "所選總數： {count, number}",
+    "totalSelected": "所選總數 :  {count, number}",
     "applications": "應用程式",
     "search": "搜尋",
     "noSourceYet": "還沒有來源"
