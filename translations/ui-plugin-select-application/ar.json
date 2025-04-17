@@ -2,9 +2,9 @@
     "meta.title": "Select application",
     "selectApplication": "Select application",
     "name": "Name",
-    "applicationsFound": "{count, number} applications found",
+    "applicationsFound": "تم العثور على {count, number} تطبيقاً",
     "totalSelected": "Total selected: {count, number}",
-    "applications": "Applications",
+    "applications": "التطبيقات",
     "search": "Search",
     "noSourceYet": "no source yet"
 }
