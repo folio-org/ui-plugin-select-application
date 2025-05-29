@@ -2,9 +2,9 @@
     "meta.title": "Select application",
     "selectApplication": "Select application",
     "name": "Ім'я/Назва",
-    "applicationsFound": "{count, number} applications found",
+    "applicationsFound": "Знайдено {count, number} додатків",
     "totalSelected": "Total selected: {count, number}",
-    "applications": "Applications",
+    "applications": "Додатки",
     "search": "Пошук",
     "noSourceYet": "джерела поки що немає"
 }
