@@ -6,5 +6,5 @@
     "totalSelected": "Razem wybranych: {count, number}",
     "applications": "Applications",
     "search": "Szukaj",
-    "noSourceYet": "no source yet"
+    "noSourceYet": "brak źródła"
 }
