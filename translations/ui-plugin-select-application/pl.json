@@ -4,7 +4,7 @@
     "name": "Nazwa",
     "applicationsFound": "{count, number} applications found",
     "totalSelected": "Razem wybranych: {count, number}",
-    "applications": "Applications",
+    "applications": "Aplikacje",
     "search": "Szukaj",
     "noSourceYet": "brak źródła"
 }
