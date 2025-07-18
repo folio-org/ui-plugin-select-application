@@ -155,8 +155,8 @@ export default function View({
     <div ref={contentRef} data-testid="search-applications-testId">
       <SearchAndSortQuery
         initialFilterState={{ status: [] }}
-        initialSortState={{ sort: 'name' }}
         initialSearch={initialSearch}
+        initialSortState={{ sort: 'name' }}
         queryGetter={queryGetter}
         querySetter={querySetter}
       >
@@ -293,7 +293,5 @@ View.propTypes = {
   onSave: PropTypes.func.isRequired,
   checkedAppIdsMap: PropTypes.object,
   initialSearch: PropTypes.string,
-  queryGetter: PropTypes.func,
-  querySetter: PropTypes.func
 };
 

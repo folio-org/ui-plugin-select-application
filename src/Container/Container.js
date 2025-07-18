@@ -4,9 +4,6 @@ import PropTypes from 'prop-types';
 import { useStripes } from '@folio/stripes/core';
 
 import View from '../View';
-import { useApplications } from '../hooks/useApplications';
-
-const INITIAL_RESULT_COUNT = 0;
 
 export default function Container({
   onClose,
@@ -15,7 +12,6 @@ export default function Container({
 }) {
   const stripes = useStripes();
   const applicationsList = Object.values(stripes.discovery.applications).map(app => ({ id: app.name, name: app.name }));
-  //const { applications, isLoading, onSubmitSearch } = useApplications();
   const [applications, setApplications] = useState(applicationsList);
   const [query, setQuery] = useState({});
   const querySetter = ({ nsValues }) => {
@@ -30,7 +26,7 @@ export default function Container({
     }
 
     if (nsValues.query) {
-        filteredApplications = filteredApplications.filter(app => app.id.includes(nsValues.query));
+      filteredApplications = filteredApplications.filter(app => app.id.includes(nsValues.query));
     }
 
     setApplications(filteredApplications);
@@ -44,9 +40,9 @@ export default function Container({
       data={{
         applications
       }}
+      initialSearch=""
       onClose={onClose}
       onSave={onSave}
-      initialSearch={''}
       queryGetter={queryGetter}
       querySetter={querySetter}
     />
