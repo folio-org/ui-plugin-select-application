@@ -30,7 +30,10 @@ export default function View({
   data,
   onClose,
   onSave,
-  checkedAppIdsMap
+  checkedAppIdsMap,
+  initialSearch,
+  queryGetter,
+  querySetter
 }) {
   const intl = useIntl();
 
@@ -153,6 +156,9 @@ export default function View({
       <SearchAndSortQuery
         initialFilterState={{ status: [] }}
         initialSortState={{ sort: 'name' }}
+        initialSearch={initialSearch}
+        queryGetter={queryGetter}
+        querySetter={querySetter}
       >
         {
           ({
@@ -285,6 +291,9 @@ View.propTypes = {
   visibleColumns: PropTypes.arrayOf(PropTypes.string),
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  checkedAppIdsMap: PropTypes.object
+  checkedAppIdsMap: PropTypes.object,
+  initialSearch: PropTypes.string,
+  queryGetter: PropTypes.func,
+  querySetter: PropTypes.func
 };
 
