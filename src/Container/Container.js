@@ -5,6 +5,9 @@ import { useStripes } from '@folio/stripes/core';
 
 import View from '../View';
 
+const SELECTED_STATUS = 'status.selected';
+const UNSELECTED_STATUS = 'status.unselected';
+
 export default function Container({
   onClose,
   onSave,
@@ -14,14 +17,15 @@ export default function Container({
   const applicationsList = Object.values(stripes.discovery.applications).map(app => ({ id: app.name, name: app.name }));
   const [applications, setApplications] = useState(applicationsList);
   const [query, setQuery] = useState({});
+
   const querySetter = ({ nsValues }) => {
     let filteredApplications = applicationsList;
 
-    if (nsValues.filters === 'status.selected') {
+    if (nsValues.filters === SELECTED_STATUS) {
       filteredApplications = filteredApplications.filter(app => app.id in checkedAppIdsMap);
     }
 
-    if (nsValues.filters === 'status.unselected') {
+    if (nsValues.filters === UNSELECTED_STATUS) {
       filteredApplications = filteredApplications.filter(app => !(app.id in checkedAppIdsMap));
     }
 
