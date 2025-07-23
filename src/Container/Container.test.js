@@ -5,8 +5,7 @@ import { renderWithIntl, MultiColumnList } from '@folio/stripes-erm-testing';
 
 import translationsProperties from '../../test/helpers';
 
-import Container from './Container';
-
+import { Container, filterApplications } from './Container';
 
 jest.mock('../View', () => () => <div>View</div>);
 
@@ -26,6 +25,10 @@ jest.mock('@folio/stripes/core', () => {
 const onClose = jest.fn();
 const onSaveMock = jest.fn();
 const mockCheckedAppIdsMap = {};
+const mockApplicationsList = [
+  { id: 'app1', name: 'app1' },
+  { id: 'app2', name: 'app2' }
+];
 
 describe('Container', () => {
   let renderComponent;
@@ -57,5 +60,26 @@ describe('Container', () => {
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
+  });
+
+  it('filters applications by SELECTED_STATUS', () => {
+    const checkedAppIdsMap = { 'app1': true };
+    const filteredApplications = filterApplications(mockApplicationsList, checkedAppIdsMap, 'status.selected');
+
+    expect(filteredApplications).toEqual([{ id: 'app1', name: 'app1' }]);
+  });
+
+  it('filters applications by UNSELECTED_STATUS', () => {
+    const checkedAppIdsMap = { 'app1': true };
+    const filteredApplications = filterApplications(mockApplicationsList, checkedAppIdsMap, 'status.unselected');
+
+    expect(filteredApplications).toEqual([{ id: 'app2', name: 'app2' }]);
+  });
+
+  it('filters applications by query string', () => {
+    const checkedAppIdsMap = { 'app1': true };
+    const filteredApplications = filterApplications(mockApplicationsList, checkedAppIdsMap, '', 'app2');
+
+    expect(filteredApplications).toEqual([{ id: 'app2', name: 'app2' }]);
   });
 });
