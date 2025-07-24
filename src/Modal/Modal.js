@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Modal } from '@folio/stripes/components';
 
-import { Container } from '../Container';
+import Container from '../Container';
 
 import css from './Modal.css';
 
