@@ -1,1 +1,1 @@
-export { default as Container, filterApplications } from './Container';
+export { default } from './Container';

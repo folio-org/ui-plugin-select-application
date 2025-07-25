@@ -1,1 +1,1 @@
-export * from './Utils';
+export { filterApplications } from './Utils';
