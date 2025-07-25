@@ -291,7 +291,9 @@ View.propTypes = {
   visibleColumns: PropTypes.arrayOf(PropTypes.string),
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  checkedAppIdsMap: PropTypes.object,
+  checkedAppIdsMap: PropTypes.shape({
+    [PropTypes.string]: PropTypes.bool
+  }),
   initialSearch: PropTypes.string,
 };
 
