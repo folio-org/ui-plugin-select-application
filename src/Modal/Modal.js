@@ -48,6 +48,8 @@ ApplicationSearchModal.propTypes = {
     connect: PropTypes.func.isRequired,
   }),
   onSave: PropTypes.func,
-  checkedAppIdsMap: PropTypes.object
+  checkedAppIdsMap: PropTypes.shape({
+    [PropTypes.string]: PropTypes.bool
+  })
 };
 

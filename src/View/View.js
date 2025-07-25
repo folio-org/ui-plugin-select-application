@@ -30,7 +30,10 @@ export default function View({
   data,
   onClose,
   onSave,
-  checkedAppIdsMap
+  checkedAppIdsMap,
+  initialSearch,
+  queryGetter,
+  querySetter
 }) {
   const intl = useIntl();
 
@@ -152,7 +155,10 @@ export default function View({
     <div ref={contentRef} data-testid="search-applications-testId">
       <SearchAndSortQuery
         initialFilterState={{ status: [] }}
+        initialSearch={initialSearch}
         initialSortState={{ sort: 'name' }}
+        queryGetter={queryGetter}
+        querySetter={querySetter}
       >
         {
           ({
@@ -285,6 +291,9 @@ View.propTypes = {
   visibleColumns: PropTypes.arrayOf(PropTypes.string),
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  checkedAppIdsMap: PropTypes.object
+  checkedAppIdsMap: PropTypes.shape({
+    [PropTypes.string]: PropTypes.bool
+  }),
+  initialSearch: PropTypes.string,
 };
 

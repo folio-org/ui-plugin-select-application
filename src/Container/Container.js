@@ -1,7 +1,10 @@
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { useStripes } from '@folio/stripes/core';
+
 import View from '../View';
+import { filterApplications } from '../Utils';
 
 export default function Container({
   onClose,
@@ -9,17 +12,29 @@ export default function Container({
   checkedAppIdsMap
 }) {
   const stripes = useStripes();
+  const applicationsList = Object.values(stripes.discovery.applications).map(app => ({ id: app.name, name: app.name }));
+  const [applications, setApplications] = useState(applicationsList);
+  const [query, setQuery] = useState({});
 
-  const applications = Object.values(stripes.discovery.applications).map(app => ({ id: app.name, name: app.name }));
+  const querySetter = ({ nsValues }) => {
+    const filteredApplications = filterApplications(applicationsList, checkedAppIdsMap, nsValues.filters, nsValues.query);
+
+    setApplications(filteredApplications);
+    setQuery({ ...query, ...nsValues });
+  };
+  const queryGetter = () => query;
 
   return (
     <View
       checkedAppIdsMap={checkedAppIdsMap}
       data={{
-        applications,
+        applications
       }}
+      initialSearch=""
       onClose={onClose}
       onSave={onSave}
+      queryGetter={queryGetter}
+      querySetter={querySetter}
     />
   );
 }
@@ -27,7 +42,7 @@ export default function Container({
 Container.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  checkedAppIdsMap: PropTypes.object
+  checkedAppIdsMap: PropTypes.shape({
+    [PropTypes.string]: PropTypes.bool
+  })
 };
-
-

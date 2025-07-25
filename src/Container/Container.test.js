@@ -7,7 +7,6 @@ import translationsProperties from '../../test/helpers';
 
 import Container from './Container';
 
-
 jest.mock('../View', () => () => <div>View</div>);
 
 jest.mock('@folio/stripes/core', () => {
