@@ -287,17 +287,17 @@ View.propTypes = {
   ]),
   data: PropTypes.shape({
     applications: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    })).isRequired,
+      id: PropTypes.string,
+      name: PropTypes.string,
+    })),
   }).isRequired,
   onNeedMoreData: PropTypes.func,
   onSelectRow: PropTypes.func,
   queryGetter: PropTypes.func,
   querySetter: PropTypes.func,
   source: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
   }),
   visibleColumns: PropTypes.arrayOf(PropTypes.string),
   onClose: PropTypes.func.isRequired,

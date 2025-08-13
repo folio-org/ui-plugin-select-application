@@ -47,13 +47,13 @@ Filters.propTypes = {
   }),
   data: PropTypes.shape({
     applications: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
-    })).isRequired
+      id: PropTypes.string,
+      name: PropTypes.string
+    }))
   }).isRequired,
   filterHandlers: PropTypes.shape({
-    clearGroup: PropTypes.func.isRequired,
-    state: PropTypes.func.isRequired
+    clearGroup: PropTypes.func,
+    state: PropTypes.func
   }),
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired
