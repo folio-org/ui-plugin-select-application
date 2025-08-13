@@ -68,6 +68,8 @@ export default function ApplicationSearch(props) {
 ApplicationSearch.propTypes = {
   renderTrigger: PropTypes.func,
   onSave: PropTypes.func,
-  checkedAppIdsMap: PropTypes.object
+  checkedAppIdsMap: PropTypes.shape({
+    [PropTypes.string]: PropTypes.bool
+  }),
 };
 
