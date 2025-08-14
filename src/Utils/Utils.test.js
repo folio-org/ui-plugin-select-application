@@ -34,7 +34,7 @@ describe('Utils', () => {
     expect(filteredApplications).toEqual(mockApplicationsList);
   });
 
-  it('returns empty array if applications is undefined', () => {
+  it('returns empty object if applications is undefined', () => {
     const checkedAppIdsMap = {};
     const filteredApplications = filterApplications(undefined, checkedAppIdsMap, '');
 
