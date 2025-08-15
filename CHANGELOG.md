@@ -5,6 +5,7 @@
 * *BREAKING* migrate react-intl to v7. Refs UIPSELAPP-10.
 * *BREAKING* migrate stripes dependencies to their Sunflower versions. Refs UIPSELAPP-12.
 * Implement/wire up search and filtering. Refs UIPSELAPP-14.
+* Allow search and filtering to complement each other. Allow case-insensitve searching. Refs UIPSELAPP-14.
 
 ## 1.1.0 (IN PROGRESS)
 

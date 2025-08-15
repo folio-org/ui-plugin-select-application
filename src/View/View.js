@@ -281,13 +281,24 @@ export default function View({
 
 View.propTypes = {
   children: PropTypes.node,
-  contentRef: PropTypes.object,
-  data: PropTypes.object,
+  contentRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+  ]),
+  data: PropTypes.shape({
+    applications: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+    })),
+  }).isRequired,
   onNeedMoreData: PropTypes.func,
   onSelectRow: PropTypes.func,
   queryGetter: PropTypes.func,
   querySetter: PropTypes.func,
-  source: PropTypes.object,
+  source: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+  }),
   visibleColumns: PropTypes.arrayOf(PropTypes.string),
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
@@ -296,4 +307,3 @@ View.propTypes = {
   }),
   initialSearch: PropTypes.string,
 };
-

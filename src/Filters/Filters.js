@@ -42,9 +42,19 @@ export default function Filters({ activeFilters, filterHandlers }) {
 }
 
 Filters.propTypes = {
-  activeFilters: PropTypes.object,
-  data: PropTypes.object.isRequired,
-  filterHandlers: PropTypes.object,
+  activeFilters: PropTypes.shape({
+    status: PropTypes.arrayOf(PropTypes.string)
+  }),
+  data: PropTypes.shape({
+    applications: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    }))
+  }).isRequired,
+  filterHandlers: PropTypes.shape({
+    clearGroup: PropTypes.func,
+    state: PropTypes.func
+  }),
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired
   }),
