@@ -6,6 +6,7 @@
 * *BREAKING* migrate stripes dependencies to their Sunflower versions. Refs UIPSELAPP-12.
 * Implement/wire up search and filtering. Refs UIPSELAPP-14.
 * Allow search and filtering to complement each other. Allow case-insensitve searching. Refs UIPSELAPP-14.
+* Fix bug where searching multiple times produces different search results because of React state issues. Refs UIPSELAPP-14.
 
 ## 1.1.0 (IN PROGRESS)
 
