@@ -17,10 +17,16 @@ export default function Container({
   const [query, setQuery] = useState({});
 
   const querySetter = ({ nsValues }) => {
-    const filteredApplications = filterApplications(applicationsList, checkedAppIdsMap, nsValues.filters, nsValues.query);
+    const currentQuery = { ...query, ...nsValues };
+
+    // Query and filters don't work the same way. An omitted query means reset search or filters only.
+    // Omitted filters can occur when only search term is updated (but filters were previously applied).
+    if (!nsValues.query) { currentQuery.query = undefined; }
+
+    const filteredApplications = filterApplications(applicationsList, checkedAppIdsMap, currentQuery.filters, currentQuery.query);
 
     setApplications(filteredApplications);
-    setQuery({ ...query, ...nsValues });
+    setQuery(currentQuery);
   };
   const queryGetter = () => query;
 
