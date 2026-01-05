@@ -1,6 +1,6 @@
 {
-    "meta.title": "Select application",
-    "selectApplication": "Select application",
+    "meta.title": "Wybierz aplikację",
+    "selectApplication": "Wybierz aplikację",
     "name": "Nazwa",
     "applicationsFound": "{count, number} applications found",
     "totalSelected": "Razem wybranych: {count, number}",
