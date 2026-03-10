@@ -7,6 +7,7 @@
 * Implement/wire up search and filtering. Refs UIPSELAPP-14.
 * Allow search and filtering to complement each other. Allow case-insensitve searching. Refs UIPSELAPP-14.
 * Fix bug where searching multiple times produces different search results because of React state issues. Refs UIPSELAPP-14.
+* Do not virtualize the application-list table. Refs UIPSELAPP-16.
 
 ## 1.1.0 (IN PROGRESS)
 
