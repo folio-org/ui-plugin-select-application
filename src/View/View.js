@@ -259,7 +259,7 @@ export default function View({
                     autosize
                     columnMapping={columnMapping}
                     columnWidths={columnWidths}
-                    contentData={data.applications}
+                    contentData={data.applications.toSorted((a, b) => a.name.localeCompare(b.name))}
                     formatter={formatter}
                     id="list-applications"
                     interactive={false}
