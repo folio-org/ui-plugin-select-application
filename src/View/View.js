@@ -265,7 +265,6 @@ export default function View({
                     interactive={false}
                     rowFormatter={rowFormatter}
                     totalCount={data.applications.length}
-                    virtualize
                     visibleColumns={['isChecked', 'name']}
                   />
                 </Pane>
