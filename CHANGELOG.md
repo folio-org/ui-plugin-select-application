@@ -1,6 +1,7 @@
 # Change history for ui-plugin-select-application
 
 ## [3.0.0](https://github.com/folio-org/ui-plugin-select-application/tree/v3.0.0) (2026-04-15)
+[Full Changelog](https://github.com/folio-org/ui-plugin-select-application/compare/v3.0.0...v2.0.0)
 
 * *BREAKING* migrate stripes dependencies to their Sunflower versions. Refs UIPSELAPP-12.
 * Implement/wire up search and filtering. Refs UIPSELAPP-14.
@@ -10,7 +11,7 @@
 * Sort applications by name. Refs UIPSELAPP-17.
 
 ## [2.0.0](https://github.com/folio-org/ui-plugin-select-application/tree/v2.0.0) (2025-03-13)
-[Full Changelog](https://github.com/folio-org/stripes-core/compare/v2.0.0...v1.0.0)
+[Full Changelog](https://github.com/folio-org/ui-plugin-select-application/compare/v2.0.0...v1.0.0)
 
 * *BREAKING* migrate react-intl to v7. Refs UIPSELAPP-10.
 * Add Deque Axe a11y tests. Refs UIPSELAPP-7.
