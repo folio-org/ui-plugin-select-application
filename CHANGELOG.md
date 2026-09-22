@@ -1,5 +1,9 @@
 # Change history for ui-plugin-select-application
 
+## [3.1.0] IN-PROGRESS
+* Re-implement 'selected/unselected' filters to use local state. Refs UIPSELAPP-18.
+* Add 'Application assignment status' filter for persisted 'assigned', 'unassigned' state. Refs UIPSELAPP-19.
+
 ## [3.0.0](https://github.com/folio-org/ui-plugin-select-application/tree/v3.0.0) (2026-04-15)
 [Full Changelog](https://github.com/folio-org/ui-plugin-select-application/compare/v3.0.0...v2.0.0)
 
