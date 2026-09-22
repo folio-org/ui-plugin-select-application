@@ -5,15 +5,19 @@ import {
   Accordion,
   Checkbox,
   renderWithIntl,
-  translationsProperties,
 } from '@folio/stripes-erm-testing';
+import translationsProperties from '../../test/helpers';
 import Filters from './Filters';
 
 
 const activeFilters = {
-  'status': [
+  selection: [
     'selected',
     'unselected'
+  ],
+  status: [
+    'assigned',
+    'unassigned'
   ]
 };
 
@@ -44,21 +48,30 @@ describe('Filters', () => {
     );
   });
 
-  test('renders the Status Accordion', async () => {
+  test('renders the Selection Accordion', async () => {
     await Accordion('Application selection status').is({ open: true });
   });
 
-  it('renders Status Checkboxs', async () => {
-    await Checkbox({ id: 'clickable-filter-status-selected' }).exists();
-    await Checkbox({ id: 'clickable-filter-status-unselected' }).exists();
+  test('renders the Status Accordion', async () => {
+    await Accordion('Application assignment status').is({ open: true });
+  });
+
+  it('renders Selection Checkboxes', async () => {
+    await Checkbox({ id: 'clickable-filter-selection-selected' }).exists();
+    await Checkbox({ id: 'clickable-filter-selection-unselected' }).exists();
+  });
+
+  it('renders Status Checkboxes', async () => {
+    await Checkbox({ id: 'clickable-filter-status-assigned' }).exists();
+    await Checkbox({ id: 'clickable-filter-status-unassigned' }).exists();
   });
 
   it('clear filter group on click is called', async () => {
-    await Checkbox({ id: 'clickable-filter-status-selected' }).click();
-    await Checkbox({ id: 'clickable-filter-status-unselected' }).click();
+    await Checkbox({ id: 'clickable-filter-selection-selected' }).click();
+    await Checkbox({ id: 'clickable-filter-selection-unselected' }).click();
 
-    await Checkbox({ id: 'clickable-filter-status-selected', checked: true }).exists;
-    await Checkbox({ id: 'clickable-filter-status-unselected', checked: true }).exists;
+    await Checkbox({ id: 'clickable-filter-selection-selected', checked: true }).exists;
+    await Checkbox({ id: 'clickable-filter-selection-unselected', checked: true }).exists;
   });
 
   test('has no a11y violations according to axe', async () => {

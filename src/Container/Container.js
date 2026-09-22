@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import { useStripes } from '@folio/stripes/core';
 
 import View from '../View';
-import { filterApplications } from '../Utils';
+import { filterApplicationsByQuery } from '../Utils';
 
 export default function Container({
   onClose,
   onSave,
-  checkedAppIdsMap
+  checkedAppIdsMap,
+  assignedAppIdsMap
 }) {
   const stripes = useStripes();
   const applicationsList = Object.values(stripes.discovery.applications).map(app => ({ id: app.name, name: app.name }));
@@ -23,7 +24,7 @@ export default function Container({
     // Omitted filters can occur when only search term is updated (but filters were previously applied).
     if (!nsValues.query) { currentQuery.query = undefined; }
 
-    const filteredApplications = filterApplications(applicationsList, checkedAppIdsMap, currentQuery.filters, currentQuery.query);
+    const filteredApplications = filterApplicationsByQuery(applicationsList, currentQuery.query);
 
     setApplications(filteredApplications);
     setQuery(currentQuery);
@@ -32,6 +33,7 @@ export default function Container({
 
   return (
     <View
+      assignedAppIdsMap={assignedAppIdsMap}
       checkedAppIdsMap={checkedAppIdsMap}
       data={{
         applications
@@ -50,5 +52,12 @@ Container.propTypes = {
   onSave: PropTypes.func.isRequired,
   checkedAppIdsMap: PropTypes.shape({
     [PropTypes.string]: PropTypes.bool
+  }),
+  assignedAppIdsMap: PropTypes.shape({
+    [PropTypes.string]: PropTypes.bool
   })
+};
+
+Container.defaultProps = {
+  assignedAppIdsMap: {}
 };

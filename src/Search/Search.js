@@ -71,5 +71,8 @@ ApplicationSearch.propTypes = {
   checkedAppIdsMap: PropTypes.shape({
     [PropTypes.string]: PropTypes.bool
   }),
+  assignedAppIdsMap: PropTypes.shape({
+    [PropTypes.string]: PropTypes.bool
+  }),
 };
 

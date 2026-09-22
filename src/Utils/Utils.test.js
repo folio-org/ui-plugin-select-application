@@ -1,71 +1,100 @@
-import { filterApplications } from './Utils';
+import { filterApplicationsByQuery, filterBySelectionAndStatus } from './Utils';
 
 const mockApplicationsList = [
   { id: 'app1', name: 'app1' },
   { id: 'app2', name: 'app2' }
 ];
 
-describe('Utils', () => {
-  it('filters applications by SELECTED_STATUS', () => {
-    const checkedAppIdsMap = { 'app1': true };
-    const filteredApplications = filterApplications(mockApplicationsList, checkedAppIdsMap, 'status.selected');
-
-    expect(filteredApplications).toEqual([{ id: 'app1', name: 'app1' }]);
-  });
-
-  it('filters applications by UNSELECTED_STATUS', () => {
-    const checkedAppIdsMap = { 'app1': true };
-    const filteredApplications = filterApplications(mockApplicationsList, checkedAppIdsMap, 'status.unselected');
-
-    expect(filteredApplications).toEqual([{ id: 'app2', name: 'app2' }]);
-  });
-
+describe('filterApplicationsByQuery', () => {
   it('filters applications by query string', () => {
-    const checkedAppIdsMap = { 'app1': true };
-    const filteredApplications = filterApplications(mockApplicationsList, checkedAppIdsMap, '', 'app2');
+    const filteredApplications = filterApplicationsByQuery(mockApplicationsList, 'app2');
 
     expect(filteredApplications).toEqual([{ id: 'app2', name: 'app2' }]);
   });
 
-  it('returns all applications when no filter or query is provided', () => {
-    const checkedAppIdsMap = {};
-    const filteredApplications = filterApplications(mockApplicationsList, checkedAppIdsMap, '');
+  it('returns all applications when no query is provided', () => {
+    const filteredApplications = filterApplicationsByQuery(mockApplicationsList, '');
 
     expect(filteredApplications).toEqual(mockApplicationsList);
   });
 
   it('returns empty object if applications is undefined', () => {
-    const checkedAppIdsMap = {};
-    const filteredApplications = filterApplications(undefined, checkedAppIdsMap, '');
+    const filteredApplications = filterApplicationsByQuery(undefined, '');
 
     expect(filteredApplications).toEqual({});
   });
 
-  it('filters applications by query and SELECTED_STATUS together', () => {
-    const checkedAppIdsMap = { 'app2': true };
-    const filteredApplications = filterApplications(mockApplicationsList, checkedAppIdsMap, 'status.selected', 'app2');
-
-    expect(filteredApplications).toEqual([{ id: 'app2', name: 'app2' }]);
-  });
-
-  it('filters applications by query and UNSELECTED_STATUS together', () => {
-    const checkedAppIdsMap = { 'app1': true };
-    const filteredApplications = filterApplications(mockApplicationsList, checkedAppIdsMap, 'status.unselected', 'app2');
-
-    expect(filteredApplications).toEqual([{ id: 'app2', name: 'app2' }]);
-  });
-
   it('returns empty array if no applications match the query', () => {
-    const checkedAppIdsMap = {};
-    const filteredApplications = filterApplications(mockApplicationsList, checkedAppIdsMap, '', 'nonexistent');
+    const filteredApplications = filterApplicationsByQuery(mockApplicationsList, 'nonexistent');
 
     expect(filteredApplications).toEqual([]);
   });
+});
 
-  it('returns empty array if no applications match the filter', () => {
-    const checkedAppIdsMap = { 'app3': true };
-    const filteredApplications = filterApplications(mockApplicationsList, checkedAppIdsMap, 'status.selected');
+describe('filterBySelectionAndStatus', () => {
+  it('returns all applications when no filters are active', () => {
+    const filtered = filterBySelectionAndStatus(mockApplicationsList, {}, {}, {});
 
-    expect(filteredApplications).toEqual([]);
+    expect(filtered).toEqual(mockApplicationsList);
+  });
+
+  it('filters by selected checkbox state', () => {
+    const checkedIdsMap = { app1: true };
+    const filtered = filterBySelectionAndStatus(mockApplicationsList, checkedIdsMap, {}, { selection: ['selected'] });
+
+    expect(filtered).toEqual([{ id: 'app1', name: 'app1' }]);
+  });
+
+  it('filters by unselected checkbox state', () => {
+    const checkedIdsMap = { app1: true };
+    const filtered = filterBySelectionAndStatus(mockApplicationsList, checkedIdsMap, {}, { selection: ['unselected'] });
+
+    expect(filtered).toEqual([{ id: 'app2', name: 'app2' }]);
+  });
+
+  it('filters by assigned status, independent of checkbox state', () => {
+    const checkedIdsMap = { app2: true };
+    const assignedAppIdsMap = { app1: true };
+    const filtered = filterBySelectionAndStatus(mockApplicationsList, checkedIdsMap, assignedAppIdsMap, { status: ['assigned'] });
+
+    expect(filtered).toEqual([{ id: 'app1', name: 'app1' }]);
+  });
+
+  it('filters by unassigned status, independent of checkbox state', () => {
+    const checkedIdsMap = { app1: true };
+    const assignedAppIdsMap = { app1: true };
+    const filtered = filterBySelectionAndStatus(mockApplicationsList, checkedIdsMap, assignedAppIdsMap, { status: ['unassigned'] });
+
+    expect(filtered).toEqual([{ id: 'app2', name: 'app2' }]);
+  });
+
+  it('combines selection and status filters independently (AND across groups)', () => {
+    const checkedIdsMap = { app1: true, app2: true };
+    const assignedAppIdsMap = { app1: true };
+    const filtered = filterBySelectionAndStatus(
+      mockApplicationsList,
+      checkedIdsMap,
+      assignedAppIdsMap,
+      { selection: ['selected'], status: ['unassigned'] },
+    );
+
+    // app1 is selected but assigned; app2 is selected and unassigned -> only app2 matches both.
+    expect(filtered).toEqual([{ id: 'app2', name: 'app2' }]);
+  });
+
+  it('checkbox interactions never affect the status filter result', () => {
+    const assignedAppIdsMap = { app1: true };
+
+    const uncheckedResult = filterBySelectionAndStatus(mockApplicationsList, {}, assignedAppIdsMap, { status: ['assigned'] });
+    const checkedResult = filterBySelectionAndStatus(mockApplicationsList, { app1: true, app2: true }, assignedAppIdsMap, { status: ['assigned'] });
+
+    expect(uncheckedResult).toEqual([{ id: 'app1', name: 'app1' }]);
+    expect(checkedResult).toEqual([{ id: 'app1', name: 'app1' }]);
+  });
+
+  it('returns empty array if no applications match the active filters', () => {
+    const filtered = filterBySelectionAndStatus(mockApplicationsList, {}, {}, { status: ['assigned'] });
+
+    expect(filtered).toEqual([]);
   });
 });

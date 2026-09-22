@@ -13,7 +13,8 @@ export default function ApplicationSearchModal(props) {
     onClose,
     open,
     onSave,
-    checkedAppIdsMap
+    checkedAppIdsMap,
+    assignedAppIdsMap
   } = props;
   const backupModalRef = useRef();
   const theModalRef = modalRef || backupModalRef;
@@ -31,6 +32,7 @@ export default function ApplicationSearchModal(props) {
       size="large"
     >
       <Container
+        assignedAppIdsMap={assignedAppIdsMap}
         checkedAppIdsMap={checkedAppIdsMap}
         onClose={onClose}
         onSave={onSave}
@@ -49,6 +51,9 @@ ApplicationSearchModal.propTypes = {
   }),
   onSave: PropTypes.func,
   checkedAppIdsMap: PropTypes.shape({
+    [PropTypes.string]: PropTypes.bool
+  }),
+  assignedAppIdsMap: PropTypes.shape({
     [PropTypes.string]: PropTypes.bool
   })
 };
