@@ -149,3 +149,35 @@ describe('View Status column', () => {
     expect(getAllByText('Unassigned')).toHaveLength(unassignedCount);
   });
 });
+
+describe('View Status column fallback (no assignedAppIdsMap supplied)', () => {
+  const renderWithoutAssigned = () => renderWithIntl(
+    <MemoryRouter>
+      <View
+        checkedAppIdsMap={{ 2: true }}
+        data={{ applications: mockApplications }}
+        onClose={onCloseMock}
+        onSave={onSaveMock}
+      />
+    </MemoryRouter>,
+    translationsProperties
+  );
+
+  it('mirrors checkbox state at entry instead of showing every row as Unassigned', () => {
+    const { getAllByText } = renderWithoutAssigned();
+
+    expect(getAllByText('Assigned')).toHaveLength(1);
+    expect(getAllByText('Unassigned')).toHaveLength(mockApplications.length - 1);
+  });
+
+  it('does not change status when a checkbox is toggled mid-session', async () => {
+    const { getAllByText } = renderWithoutAssigned();
+
+    await act(async () => {
+      await MultiColumnListRow({ indexRow: 'row-0' }).find(Checkbox({ checked: false })).click();
+    });
+
+    expect(getAllByText('Assigned')).toHaveLength(1);
+    expect(getAllByText('Unassigned')).toHaveLength(mockApplications.length - 1);
+  });
+});

@@ -42,6 +42,9 @@ export default function View({
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
   const [checkedIdsMap, setCheckedIdsMap] = useState({ ...checkedAppIdsMap });
 
+  // Snapshot at entry, used as the assigned-status fallback below so it doesn't shift mid-session.
+  const initialCheckedIdsMapRef = useRef({ ...checkedAppIdsMap });
+
   const toggleChecked = (id) => {
     if (id in checkedIdsMap) {
       // eslint-disable-next-line no-unused-vars
@@ -52,6 +55,9 @@ export default function View({
 
     setCheckedIdsMap({ ...checkedIdsMap, [id]: true });
   };
+
+  // Fallback when assignedAppIdsMap isn't supplied, rather than showing every app as "Unassigned".
+  const effectiveAssignedAppIdsMap = assignedAppIdsMap !== undefined ? assignedAppIdsMap : initialCheckedIdsMapRef.current;
 
   const isCheckedAll = Object.keys(checkedIdsMap).length === data.applications.length;
 
@@ -112,7 +118,7 @@ export default function View({
     name: ({ name }) => <>{name}</>,
     status: application => (
       <FormattedMessage
-        id={application.id in assignedAppIdsMap ? 'ui-plugin-select-application.assigned' : 'ui-plugin-select-application.unassigned'}
+        id={application.id in effectiveAssignedAppIdsMap ? 'ui-plugin-select-application.assigned' : 'ui-plugin-select-application.unassigned'}
       />
     )
   };
@@ -197,7 +203,7 @@ export default function View({
               selectionSnapshotRef.current = { ...checkedIdsMap };
             }
 
-            const displayedApplications = filterBySelectionAndStatus(data.applications, selectionSnapshotRef.current, assignedAppIdsMap, activeFilters.state);
+            const displayedApplications = filterBySelectionAndStatus(data.applications, selectionSnapshotRef.current, effectiveAssignedAppIdsMap, activeFilters.state);
             return (
               <Paneset id="applications-paneset">
                 {filterPaneIsVisible &&
@@ -334,8 +340,4 @@ View.propTypes = {
     [PropTypes.string]: PropTypes.bool
   }),
   initialSearch: PropTypes.string,
-};
-
-View.defaultProps = {
-  assignedAppIdsMap: {}
 };

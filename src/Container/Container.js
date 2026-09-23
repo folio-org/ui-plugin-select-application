@@ -57,7 +57,3 @@ Container.propTypes = {
     [PropTypes.string]: PropTypes.bool
   })
 };
-
-Container.defaultProps = {
-  assignedAppIdsMap: {}
-};
