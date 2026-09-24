@@ -1,16 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useIntl } from 'react-intl';
 
 import { Accordion, AccordionSet, FilterAccordionHeader } from '@folio/stripes/components';
 import { CheckboxFilter } from '@folio/stripes/smart-components';
 
-const FILTERS_DATA_OPTIONS = {
-  status: [{ value: 'selected', label:'Selected' },
-    { value: 'unselected', label:'Unselected' }
-  ],
-};
-
 export default function Filters({ activeFilters, filterHandlers }) {
+  const intl = useIntl();
+
+  const FILTERS_DATA_OPTIONS = {
+    selection: [
+      { value: 'selected', label: intl.formatMessage({ id: 'ui-plugin-select-application.selected' }) },
+      { value: 'unselected', label: intl.formatMessage({ id: 'ui-plugin-select-application.unselected' }) },
+    ],
+    status: [
+      { value: 'assigned', label: intl.formatMessage({ id: 'ui-plugin-select-application.assigned' }) },
+      { value: 'unassigned', label: intl.formatMessage({ id: 'ui-plugin-select-application.unassigned' }) },
+    ],
+  };
+
+  const FILTER_LABELS = {
+    selection: intl.formatMessage({ id: 'ui-plugin-select-application.filter.selection' }),
+    status: intl.formatMessage({ id: 'ui-plugin-select-application.filter.status' }),
+  };
+
   const renderCheckboxFilter = (name, props) => {
     const groupFilters = activeFilters[name] || [];
 
@@ -19,7 +32,7 @@ export default function Filters({ activeFilters, filterHandlers }) {
         displayClearButton={groupFilters.length > 0}
         header={FilterAccordionHeader}
         id={`filter-accordion-${name}`}
-        label="Application selection status"
+        label={FILTER_LABELS[name]}
         onClearFilter={() => { filterHandlers.clearGroup(name); }}
         separator={false}
         {...props}
@@ -36,6 +49,7 @@ export default function Filters({ activeFilters, filterHandlers }) {
 
   return (
     <AccordionSet>
+      {renderCheckboxFilter('selection')}
       {renderCheckboxFilter('status')}
     </AccordionSet>
   );
@@ -43,6 +57,7 @@ export default function Filters({ activeFilters, filterHandlers }) {
 
 Filters.propTypes = {
   activeFilters: PropTypes.shape({
+    selection: PropTypes.arrayOf(PropTypes.string),
     status: PropTypes.arrayOf(PropTypes.string)
   }),
   data: PropTypes.shape({
@@ -55,14 +70,11 @@ Filters.propTypes = {
     clearGroup: PropTypes.func,
     state: PropTypes.func
   }),
-  intl: PropTypes.shape({
-    formatMessage: PropTypes.func.isRequired
-  }),
 };
 
 Filters.defaultProps = {
   activeFilters: {
+    selection: [],
     status: [],
   }
 };
-

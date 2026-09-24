@@ -1,1 +1,1 @@
-export { filterApplications } from './Utils';
+export { filterApplicationsByQuery, filterBySelectionAndStatus } from './Utils';
